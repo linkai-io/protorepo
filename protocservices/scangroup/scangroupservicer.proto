@@ -8,9 +8,11 @@ option go_package="gopkg.linkai.io/v1/repos/am/protocservices/scangroup";
 
 service ScanGroup {
     rpc Get(GroupRequest) returns (GroupResponse);
+    rpc GetByName(GroupRequest) returns (GroupResponse);
     rpc Create(NewGroupRequest) returns (GroupCreatedResponse);
     rpc Delete(DeleteGroupRequest) returns (GroupDeletedResponse);
     rpc GetVersion(GroupVersionRequest) returns (GroupVersionResponse);
+    rpc GetVersionByName(GroupVersionRequest) returns (GroupVersionResponse);
     rpc CreateVersion(NewVersionRequest) returns (VersionCreatedResponse);
     rpc DeleteVersion(DeleteVersionRequest) returns (VersionDeletedResponse);
     rpc Groups(GroupsRequest) returns (stream GroupResponse);
@@ -80,6 +82,7 @@ message NewGroupRequest {
 message GroupCreatedResponse {
     int32 OrgID = 1;
     int32 GroupID = 2;
+    int32 GroupVersionID = 3;
 }
 
 message NewVersionRequest {
@@ -91,6 +94,7 @@ message GroupVersionRequest {
     UserContext UserContext = 1;
     int32 GroupID = 2;
     int32 GroupVersionID = 3;
+    string GroupVersionName = 4;
 }
 
 message GroupVersionResponse {
@@ -131,6 +135,7 @@ message GroupRequest {
     UserContext UserContext = 1;
     int32 GroupID = 2;
     int32 GroupVersionID = 3;
+    string GroupName = 4;
 }
 
 message GroupsRequest {
