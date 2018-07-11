@@ -1,0 +1,202 @@
+syntax = "proto3";
+
+package scangroup;
+
+import "prototypes/user.proto";
+
+option go_package="gopkg.linkai.io/v1/repos/am/protocservices/scangroup";
+
+service ScanGroup {
+    rpc Get(GroupRequest) returns (GroupResponse);
+    rpc Create(NewGroupRequest) returns (GroupCreatedResponse);
+    rpc Delete(DeleteGroupRequest) returns (GroupDeletedResponse);
+    rpc GetVersion(GroupVersionRequest) returns (GroupVersionResponse);
+    rpc CreateVersion(NewVersionRequest) returns (VersionCreatedResponse);
+    rpc DeleteVersion(DeleteVersionRequest) returns (VersionDeletedResponse);
+    rpc Groups(GroupsRequest) returns (stream GroupResponse);
+    rpc Addresses(AddressesRequest) returns (stream AddressesResponse);
+    rpc AddAddresses(stream AddAddressRequest) returns (AddAddressesResponse);
+    rpc UpdatedAddresses(stream UpdateAddressRequest) returns (UpdateAddressesResponse);
+}
+
+message NSModuleConfig {
+    string Name = 1;
+}
+
+message BruteModuleConfig {
+    string Name = 1;
+    repeated string CustomSubNames = 2;
+    int32 MaxDepth = 3;
+}
+
+message PortModuleConfig {
+    string Name = 1;
+    repeated int32 Ports = 2;
+}
+
+message WebModuleConfig {
+    string Name = 1;
+    bool TakeScreenShots = 2;
+    int32 MaxLinks = 3;
+    bool ExtractJS = 4;
+    bool FingerprintFrameworks = 5;
+}
+
+message ModuleConfiguration {
+    NSModuleConfig NSConfig = 1;
+    BruteModuleConfig BruteConfig = 2;
+    PortModuleConfig PortConfig = 3;
+    WebModuleConfig WebModuleConfig = 4;
+    repeated int64 DailyScanSchedules = 5;
+}
+
+message Group {
+    int32 OrgID = 1;
+    int32 GroupID = 2;
+    string GroupName = 3;
+    int64 CreationTime = 4;
+    int32 CreatedBy = 5;
+    bytes OriginalInput = 6;
+    bool Deleted = 7;
+}
+
+message GroupVersion {
+    int32 OrgID = 1;
+    int32 GroupID = 2;
+    int32 GroupVersionID = 3;
+    string VersionName = 4;
+    int64 CreationTime = 5;
+    int32 CreatedBy = 6;
+    ModuleConfiguration Configuration = 7;
+    bool Deleted = 8;
+}
+
+message NewGroupRequest {
+    UserContext UserContext = 1;
+    Group Group = 2;
+    GroupVersion Version = 3;
+}
+
+message GroupCreatedResponse {
+    int32 OrgID = 1;
+    int32 GroupID = 2;
+}
+
+message NewVersionRequest {
+    UserContext UserContext = 1;
+    GroupVersion Version = 2;
+}
+
+message GroupVersionRequest {
+    UserContext UserContext = 1;
+    int32 GroupID = 2;
+    int32 GroupVersionID = 3;
+}
+
+message GroupVersionResponse {
+    int32 OrgID = 1;
+    GroupVersion GroupVersion = 2;
+}
+
+message VersionCreatedResponse {
+    int32 OrgID = 1;
+    int32 GroupID = 2;
+    int32 GroupVersionID = 3;
+}
+
+message DeleteGroupRequest {
+    UserContext UserContext = 1;
+    int32 GroupID = 2;
+}
+
+message GroupDeletedResponse {
+    int32 OrgID = 1;
+    int32 GroupID = 2;
+}
+
+message DeleteVersionRequest {
+    UserContext UserContext = 1;
+    int32 GroupID = 2;
+    int32 GroupVersionID = 3;
+    string VersionName = 4;
+}
+
+message VersionDeletedResponse {
+    int32 OrgID = 1;
+    int32 GroupID = 2;
+    int32 GroupVersionID = 3;
+}
+
+message GroupRequest {
+    UserContext UserContext = 1;
+    int32 GroupID = 2;
+    int32 GroupVersionID = 3;
+}
+
+message GroupsRequest {
+    UserContext UserContext = 1;
+}
+
+message GroupResponse {
+    int32 OrgID = 1;
+    Group Group = 2;
+}
+
+message Address {
+    int32 OrgID = 1;
+    int64 AddressID = 2;
+    int32 GroupID = 3;
+    string Address = 4;
+    ModuleConfiguration Settings = 5;
+    int64 AddedTime = 6;
+    string AddedBy = 7;
+    bool Ignored  = 8;
+}
+
+message AddressesRequest {
+    UserContext UserContext = 1;
+    int32 GroupID = 2;
+    bool Ignore = 4;
+}
+
+
+message AddressesResponse {
+    int32 OrgID = 1;
+    Address Addresses = 2;
+}
+
+message AddAddressRequest {
+    UserContext UserContext = 1;
+    int32 GroupID = 2;
+    int64 AddedTime = 3;
+    string AddedBy = 4;
+    string Address = 5;
+    ModuleConfiguration Settings = 6;
+    bool Ignored = 7;
+}
+
+message FailedAddress {
+    string FailedAddress = 1;
+    string Reason = 2;
+}
+
+message AddAddressesResponse {
+    int32 OrgID = 1;
+    int32 CountAdded = 2;
+    repeated FailedAddress FailedAddresses = 3;
+}
+
+message UpdateAddressRequest {
+    int32 OrgID = 1;
+    int32 GroupID = 2;
+    int32 AddressID = 3;
+    string Address = 4;
+    ModuleConfiguration Settings = 5;
+    bool Ignored = 6;
+}
+
+message UpdateAddressesResponse {
+    int32 OrgID = 1;
+    int32 CountUpdated = 2;
+    repeated FailedAddress FailedAddresses = 3;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option go_package="gopkg.linkai.io/v1/repos/am/protocservices/prototypes";
+
+message UserContext {
+    string TraceID = 1;
+	int32 OrgID = 2;
+	int32 UserID = 3;
+	string IPAddress = 4;
+	repeated string Roles = 5;
+}
