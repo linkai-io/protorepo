@@ -10,11 +10,8 @@ service ScanGroup {
     rpc Get(GroupRequest) returns (GroupResponse);
     rpc GetByName(GroupRequest) returns (GroupResponse);
     rpc Create(NewGroupRequest) returns (GroupCreatedResponse);
+    rpc Update(UpdateGroupRequest) returns (GroupUpdatedResponse);
     rpc Delete(DeleteGroupRequest) returns (GroupDeletedResponse);
-    rpc GetVersion(GroupVersionRequest) returns (GroupVersionResponse);
-    rpc GetVersionByName(GroupVersionRequest) returns (GroupVersionResponse);
-    rpc CreateVersion(NewVersionRequest) returns (VersionCreatedResponse);
-    rpc DeleteVersion(DeleteVersionRequest) returns (VersionDeletedResponse);
     rpc Groups(GroupsRequest) returns (stream GroupResponse);
     rpc Addresses(AddressesRequest) returns (stream AddressesResponse);
     rpc AddAddresses(stream AddAddressRequest) returns (AddAddressesResponse);
@@ -59,53 +56,30 @@ message Group {
     int64 CreationTime = 4;
     int32 CreatedBy = 5;
     bytes OriginalInput = 6;
-    bool Deleted = 7;
-}
-
-message GroupVersion {
-    int32 OrgID = 1;
-    int32 GroupID = 2;
-    int32 GroupVersionID = 3;
-    string VersionName = 4;
-    int64 CreationTime = 5;
-    int32 CreatedBy = 6;
-    ModuleConfiguration Configuration = 7;
+    ModuleConfiguration ModuleConfiguration = 7;
     bool Deleted = 8;
 }
 
 message NewGroupRequest {
     UserContext UserContext = 1;
     Group Group = 2;
-    GroupVersion Version = 3;
 }
 
 message GroupCreatedResponse {
     int32 OrgID = 1;
     int32 GroupID = 2;
-    int32 GroupVersionID = 3;
 }
 
-message NewVersionRequest {
+message UpdateGroupRequest {
     UserContext UserContext = 1;
-    GroupVersion Version = 2;
+    Group Group = 2;
+    int32 GroupID = 3;
+    string GroupName = 4;
 }
 
-message GroupVersionRequest {
-    UserContext UserContext = 1;
-    int32 GroupID = 2;
-    int32 GroupVersionID = 3;
-    string GroupVersionName = 4;
-}
-
-message GroupVersionResponse {
-    int32 OrgID = 1;
-    GroupVersion GroupVersion = 2;
-}
-
-message VersionCreatedResponse {
+message GroupUpdatedResponse {
     int32 OrgID = 1;
     int32 GroupID = 2;
-    int32 GroupVersionID = 3;
 }
 
 message DeleteGroupRequest {
@@ -118,23 +92,9 @@ message GroupDeletedResponse {
     int32 GroupID = 2;
 }
 
-message DeleteVersionRequest {
-    UserContext UserContext = 1;
-    int32 GroupID = 2;
-    int32 GroupVersionID = 3;
-    string VersionName = 4;
-}
-
-message VersionDeletedResponse {
-    int32 OrgID = 1;
-    int32 GroupID = 2;
-    int32 GroupVersionID = 3;
-}
-
 message GroupRequest {
     UserContext UserContext = 1;
     int32 GroupID = 2;
-    int32 GroupVersionID = 3;
     string GroupName = 4;
 }
 
@@ -163,7 +123,6 @@ message AddressesRequest {
     int32 GroupID = 2;
     bool Ignore = 4;
 }
-
 
 message AddressesResponse {
     int32 OrgID = 1;
