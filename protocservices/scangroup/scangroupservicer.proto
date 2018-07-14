@@ -14,8 +14,9 @@ service ScanGroup {
     rpc Delete(DeleteGroupRequest) returns (GroupDeletedResponse);
     rpc Groups(GroupsRequest) returns (stream GroupResponse);
     rpc Addresses(AddressesRequest) returns (stream AddressesResponse);
-    rpc AddAddresses(stream AddAddressRequest) returns (AddAddressesResponse);
-    rpc UpdatedAddresses(stream UpdateAddressRequest) returns (UpdateAddressesResponse);
+    rpc AddressCount(CountAddressesRequest) returns (CountAddressesResponse);
+    rpc AddAddresses(AddAddressRequest) returns (AddAddressesResponse);
+    rpc UpdatedAddresses(UpdateAddressRequest) returns (UpdateAddressesResponse);
 }
 
 message NSModuleConfig {
@@ -116,12 +117,16 @@ message Address {
     int64 AddedTime = 6;
     string AddedBy = 7;
     bool Ignored  = 8;
+    bool Deleted = 9;
 }
 
 message AddressesRequest {
     UserContext UserContext = 1;
     int32 GroupID = 2;
-    bool Ignore = 4;
+    int32 Start = 3;
+    int32 Limit = 4;
+    bool Ignored = 5;
+    bool Deleted = 6;
 }
 
 message AddressesResponse {
@@ -132,11 +137,14 @@ message AddressesResponse {
 message AddAddressRequest {
     UserContext UserContext = 1;
     int32 GroupID = 2;
-    int64 AddedTime = 3;
-    string AddedBy = 4;
-    string Address = 5;
-    ModuleConfiguration Settings = 6;
-    bool Ignored = 7;
+    int32 Count = 3;
+    bool Ignored = 4;
+    string AddedBy = 5;    
+    repeated string Address = 6;
+}
+
+message AddAddressesResponse {
+    int32 OrgID = 1;
 }
 
 message FailedAddress {
@@ -144,23 +152,25 @@ message FailedAddress {
     string Reason = 2;
 }
 
-message AddAddressesResponse {
+message CountAddressesRequest {
+    UserContext UserContext = 1;
+    int32 GroupID = 2;
+}
+
+message CountAddressesResponse {
     int32 OrgID = 1;
-    int32 CountAdded = 2;
-    repeated FailedAddress FailedAddresses = 3;
+    int32 GroupID = 2;
+    int32 Count = 3;
 }
 
 message UpdateAddressRequest {
-    int32 OrgID = 1;
+    UserContext UserContext = 1;
     int32 GroupID = 2;
-    int32 AddressID = 3;
-    string Address = 4;
-    ModuleConfiguration Settings = 5;
-    bool Ignored = 6;
+    bool Delete = 3;
+    bool Ignore = 4;
+    map<int64,bool> AddressMap = 5;
 }
 
 message UpdateAddressesResponse {
     int32 OrgID = 1;
-    int32 CountUpdated = 2;
-    repeated FailedAddress FailedAddresses = 3;
 }
