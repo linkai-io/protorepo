@@ -125,8 +125,10 @@ message AddressesRequest {
     int32 GroupID = 2;
     int32 Start = 3;
     int32 Limit = 4;
-    bool Ignored = 5;
-    bool Deleted = 6;
+    bool WithIgnored = 5;
+    bool IgnoredValue = 6;
+    bool WithDeleted = 7;
+    bool DeletedValue = 8;
 }
 
 message AddressesResponse {
