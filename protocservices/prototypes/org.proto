@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option go_package="gopkg.linkai.io/v1/repos/am/protocservices/prototypes";
+
+message Org {
+	int32 OrgID = 1;
+	string OrgCID = 2;
+	string OrgName = 3;
+	string OwnerEmail = 4;
+	string UserPoolID = 5;
+	string IdentityPoolID = 6;
+	string FirstName = 7;
+	string LastName = 8;
+	string Phone = 9;
+	string Country = 10;
+	string StatePrefecture = 11;
+	string Street = 12;
+	string Address1 = 13;
+	string Address2 = 14;
+	string City = 15;
+	string PostalCode = 16;
+	int64 CreationTime = 17;
+	int32 StatusID = 18;
+	bool Deleted = 19;
+	int32 SubscriptionID = 20;
+}
+
+message OrgFilter {
+	int32 Start = 1;
+	int32 Limit = 2;
+	bool WithSubcription = 3;
+	bool SubValue = 4;
+	int64 SinceCreationTime = 5;
+	bool WithStatus = 6;
+	bool StatusValue = 7;
+	bool WithDeleted = 8;
+	bool DeletedValue = 9;
+}

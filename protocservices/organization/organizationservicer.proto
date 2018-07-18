@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package scangroup;
+
+import "prototypes/user.proto";
+import "prototypes/org.proto";
+
+option go_package="gopkg.linkai.io/v1/repos/am/protocservices/organization";
+
+service Organization {
+    rpc Get(OrgRequest) returns (OrgResponse);
+    rpc List(OrgListRequest) returns (stream OrgListResponse);
+    rpc Create(CreateOrgRequest) returns (OrgCreatedResponse);
+    rpc Update(UpdateOrgRequest) returns (OrgUpdatedResponse);
+    rpc Delete(DeleteOrgRequest) returns (OrgDeletedResponse);
+}
+
+message OrgRequest {
+    enum RequestBy {
+        ORGNAME = 0;
+        ORGCID = 1;
+        ORGID = 2;
+    }
+    UserContext UserContext = 1;
+    RequestBy By = 2;
+    string OrgName = 3;
+    string OrgCID = 4;
+    int32 OrgID = 5;
+}
+
+message OrgResponse {
+    Org Org = 1;
+}
+
+message OrgListRequest {
+    UserContext UserContext = 1;
+    OrgFilter OrgFilter = 2;
+}
+
+message OrgListResponse {
+    Org Org = 1;
+}
+
+message CreateOrgRequest {
+    UserContext UserContext = 1;
+    Org Org = 2;
+}
+
+message OrgCreatedResponse {
+    string OrgCID = 1;
+    string UserCID = 2;
+}
+
+message UpdateOrgRequest {
+    UserContext UserContext = 1;
+    Org Org = 2;
+}
+
+message OrgUpdatedResponse {
+    int32 OrgID = 1;
+}
+
+message DeleteOrgRequest {
+    UserContext UserContext = 1;
+    int32 OrgID = 2;
+}
+
+message OrgDeletedResponse {
+    int32 OrgID = 1;
+}
+

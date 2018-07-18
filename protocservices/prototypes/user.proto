@@ -9,3 +9,13 @@ message UserContext {
 	string IPAddress = 4;
 	repeated string Roles = 5;
 }
+
+message User {
+	int32 OrgID = 1;
+	string OrgCID = 2;
+	string UserCID = 3;
+	int32 UserID = 4;
+	string UserEmail = 5;
+	string FirstName = 6;
+	string LastName = 7;
+}
