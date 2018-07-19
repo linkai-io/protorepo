@@ -1,0 +1,71 @@
+
+
+syntax = "proto3";
+
+package scangroup;
+
+import "prototypes/user.proto";
+
+option go_package="gopkg.linkai.io/v1/repos/am/protocservices/user";
+
+service UserService {
+    rpc Get(UserRequest) returns (UserResponse);
+    rpc List(UserListRequest) returns (stream UserListResponse);
+    rpc Create(CreateUserRequest) returns (UserCreatedResponse);
+    rpc Update(UpdateUserRequest) returns (UserUpdatedResponse);
+    rpc Delete(DeleteUserRequest) returns (UserDeletedResponse);
+}
+
+message UserRequest {
+    enum RequestBy {
+        USERCID = 0;
+        USERID = 1;
+    }
+    UserContext UserContext = 1;
+    RequestBy By = 2;
+    string UserCID = 3;
+    int32 UserID = 4;
+}
+
+message UserResponse {
+    User User = 1;
+}
+
+message UserListRequest {
+    UserContext UserContext = 1;
+    UserFilter UserFilter = 2;
+}
+
+message UserListResponse {
+    User User = 1;
+}
+
+message CreateUserRequest {
+    UserContext UserContext = 1;
+    User User = 2;
+}
+
+message UserCreatedResponse {
+    int32 OrgID = 1;
+    string UserCID = 2;
+}
+
+message UpdateUserRequest {
+    UserContext UserContext = 1;
+    User User = 2;
+}
+
+message UserUpdatedResponse {
+    int32 OrgID = 1;
+    int32 UserID = 2;
+}
+
+message DeleteUserRequest {
+    UserContext UserContext = 1;
+    int32 UserID = 2;
+}
+
+message UserDeletedResponse {
+    int32 UserID = 1;
+}
+
