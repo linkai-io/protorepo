@@ -29,7 +29,8 @@ message OrgRequest {
 }
 
 message OrgResponse {
-    Org Org = 1;
+    int32 OrgID = 1;
+    Org Org = 2;
 }
 
 message OrgListRequest {
@@ -47,8 +48,10 @@ message CreateOrgRequest {
 }
 
 message OrgCreatedResponse {
-    string OrgCID = 1;
-    string UserCID = 2;
+    int32 OrgID = 1;
+    int32 UserID = 2;
+    string OrgCID = 3;
+    string UserCID = 4;
 }
 
 message UpdateOrgRequest {

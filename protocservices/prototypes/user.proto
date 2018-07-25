@@ -18,6 +18,9 @@ message User {
 	string UserEmail = 5;
 	string FirstName = 6;
 	string LastName = 7;
+	int32 StatusID = 8;
+	int64 CreationTime = 9;
+	bool Deleted = 10;
 }
 
 message UserFilter {
@@ -25,7 +28,7 @@ message UserFilter {
 	int32 Limit = 2;
 	int32 OrgID = 3;
 	bool WithStatus = 4;
-	bool StatusValue = 5;
+	int32 StatusValue = 5;
 	bool WithDeleted = 6;
 	bool DeletedValue = 7;
 	int64 SinceCreationTime = 8;

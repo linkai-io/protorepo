@@ -28,7 +28,8 @@ message UserRequest {
 }
 
 message UserResponse {
-    User User = 1;
+    int32 OrgID = 1;
+    User User = 2;
 }
 
 message UserListRequest {
@@ -37,7 +38,8 @@ message UserListRequest {
 }
 
 message UserListResponse {
-    User User = 1;
+    int32 OrgID = 1;
+    User User = 2;
 }
 
 message CreateUserRequest {
@@ -47,12 +49,14 @@ message CreateUserRequest {
 
 message UserCreatedResponse {
     int32 OrgID = 1;
-    string UserCID = 2;
+    int32 UserID = 2;
+    string UserCID = 3;
 }
 
 message UpdateUserRequest {
     UserContext UserContext = 1;
-    User User = 2;
+    int32 UserID = 2;
+    User User = 3;
 }
 
 message UserUpdatedResponse {
@@ -66,6 +70,7 @@ message DeleteUserRequest {
 }
 
 message UserDeletedResponse {
-    int32 UserID = 1;
+    int32 OrgID = 1;
+    int32 UserID = 2;
 }
 
