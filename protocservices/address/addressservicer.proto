@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+package address;
+
+import "prototypes/user.proto";
+
+option go_package="gopkg.linkai.io/v1/repos/am/protocservices/address";
+
+service Address {
+    rpc Addresses(AddressesRequest) returns (stream AddressesResponse);
+    rpc UpdateAddresses(stream UpdateAddressRequest) returns (UpdateAddressesResponse);
+    rpc AddressCount(CountAddressesRequest) returns (CountAddressesResponse);
+    rpc Delete(DeleteAddressesRequest) returns (DeleteAddressesResponse);
+}
+
+message AddressData {
+    int32 OrgID = 1;
+    int64 AddressID = 2;
+    int32 GroupID = 3;
+    string HostAddress = 4;
+    string IPAddress = 5;
+    int64 DiscoveryTime = 6;
+    string DiscoveredBy = 7;
+    int64 LastJobID = 8;
+    int64 LastSeenTime = 9;
+    bool IsSOA = 10;
+    bool IsWildcardZone = 11;
+    bool IsHostedService = 12;
+    bool Ignored  = 13;
+    bool Deleted = 14;
+}
+
+message AddressFilter {
+    int32 OrgID = 1;
+    int32 GroupID = 2;
+    int32 Start = 3;
+    int32 Limit = 4;
+    bool WithIgnored = 5;
+    bool IgnoredValue = 6;
+    bool WithDeleted = 7;
+    bool DeletedValue = 8;
+}
+message AddressesRequest {
+    UserContext UserContext = 1;
+    AddressFilter Filter = 2;
+}
+
+message AddressesResponse {
+    int32 OrgID = 1;
+    AddressData Addresses = 2;
+}
+
+message CountAddressesRequest {
+    UserContext UserContext = 1;
+    int32 GroupID = 2;
+}
+
+message CountAddressesResponse {
+    int32 OrgID = 1;
+    int32 GroupID = 2;
+    int32 Count = 3;
+}
+
+message UpdateAddressRequest {
+    UserContext UserContext = 1;
+    AddressData Address = 2;
+}
+
+message UpdateAddressesResponse {
+    int32 OrgID = 1;
+    int32 Count = 2;
+}
+
+message DeleteAddressesRequest {
+    UserContext UserContext = 1;
+    int32 GroupID = 2;
+    repeated int64 AddressIDs = 3;
+}
+
+message DeleteAddressesResponse {
+    int32 OrgID = 1;
+}

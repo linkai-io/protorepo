@@ -14,7 +14,7 @@ service JobServicer {
 
 message JobRequest {
     int32 OrgID = 1;
-    bytes ID = 2;
+    int64 ID = 2;
     string Name = 3;
 }
 
@@ -46,7 +46,7 @@ message StopRequest {
 }
 
 message JobAddedResponse {
-    bytes ID = 1;
+    int64 ID = 1;
 }
 
 message Module {
@@ -64,7 +64,7 @@ message JobConfig {
 }
 
 message Job {
-    bytes ID = 1;
+    int64 ID = 1;
     JobConfig Config = 2;
     int64 StartTime = 3;
     int64 EndTime = 4;
@@ -77,7 +77,7 @@ message ModuleStat {
 }
 
 message JobStatus {
-    bytes ID = 1;
+    int64 ID = 1;
     int32 Status = 2;
     repeated ModuleStat ModuleStats = 3;
 }

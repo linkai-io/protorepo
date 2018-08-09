@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package scangroup;
+package organization;
 
 import "prototypes/user.proto";
 import "prototypes/org.proto";

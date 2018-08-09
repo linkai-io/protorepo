@@ -13,10 +13,6 @@ service ScanGroup {
     rpc Update(UpdateGroupRequest) returns (GroupUpdatedResponse);
     rpc Delete(DeleteGroupRequest) returns (GroupDeletedResponse);
     rpc Groups(GroupsRequest) returns (stream GroupResponse);
-    rpc Addresses(AddressesRequest) returns (stream AddressesResponse);
-    rpc AddressCount(CountAddressesRequest) returns (CountAddressesResponse);
-    rpc AddAddresses(AddAddressRequest) returns (AddAddressesResponse);
-    rpc UpdatedAddresses(UpdateAddressRequest) returns (UpdateAddressesResponse);
 }
 
 message NSModuleConfig {
@@ -57,8 +53,10 @@ message Group {
     int64 CreationTime = 4;
     int32 CreatedBy = 5;
     bytes OriginalInput = 6;
-    ModuleConfiguration ModuleConfiguration = 7;
-    bool Deleted = 8;
+    int64 ModifiedTime = 7;
+    int32 ModifiedBy = 8;
+    ModuleConfiguration ModuleConfiguration = 9;
+    bool Deleted = 10;
 }
 
 message NewGroupRequest {
@@ -106,73 +104,4 @@ message GroupsRequest {
 message GroupResponse {
     int32 OrgID = 1;
     Group Group = 2;
-}
-
-message Address {
-    int32 OrgID = 1;
-    int64 AddressID = 2;
-    int32 GroupID = 3;
-    string Address = 4;
-    ModuleConfiguration Settings = 5;
-    int64 AddedTime = 6;
-    string AddedBy = 7;
-    bool Ignored  = 8;
-    bool Deleted = 9;
-}
-
-message AddressesRequest {
-    UserContext UserContext = 1;
-    int32 GroupID = 2;
-    int32 Start = 3;
-    int32 Limit = 4;
-    bool WithIgnored = 5;
-    bool IgnoredValue = 6;
-    bool WithDeleted = 7;
-    bool DeletedValue = 8;
-}
-
-message AddressesResponse {
-    int32 OrgID = 1;
-    Address Addresses = 2;
-}
-
-message AddAddressRequest {
-    UserContext UserContext = 1;
-    int32 GroupID = 2;
-    int32 Count = 3;
-    bool Ignored = 4;
-    string AddedBy = 5;    
-    repeated string Address = 6;
-}
-
-message AddAddressesResponse {
-    int32 OrgID = 1;
-}
-
-message FailedAddress {
-    string FailedAddress = 1;
-    string Reason = 2;
-}
-
-message CountAddressesRequest {
-    UserContext UserContext = 1;
-    int32 GroupID = 2;
-}
-
-message CountAddressesResponse {
-    int32 OrgID = 1;
-    int32 GroupID = 2;
-    int32 Count = 3;
-}
-
-message UpdateAddressRequest {
-    UserContext UserContext = 1;
-    int32 GroupID = 2;
-    bool Delete = 3;
-    bool Ignore = 4;
-    map<int64,bool> AddressMap = 5;
-}
-
-message UpdateAddressesResponse {
-    int32 OrgID = 1;
 }
