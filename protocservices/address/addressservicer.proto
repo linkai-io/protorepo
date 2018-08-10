@@ -7,10 +7,10 @@ import "prototypes/user.proto";
 option go_package="gopkg.linkai.io/v1/repos/am/protocservices/address";
 
 service Address {
-    rpc Addresses(AddressesRequest) returns (stream AddressesResponse);
-    rpc UpdateAddresses(stream UpdateAddressRequest) returns (UpdateAddressesResponse);
-    rpc AddressCount(CountAddressesRequest) returns (CountAddressesResponse);
+    rpc Get(AddressesRequest) returns (stream AddressesResponse);
+    rpc Update(stream UpdateAddressRequest) returns (UpdateAddressesResponse);
     rpc Delete(DeleteAddressesRequest) returns (DeleteAddressesResponse);
+    rpc Count(CountAddressesRequest) returns (CountAddressesResponse);
 }
 
 message AddressData {
