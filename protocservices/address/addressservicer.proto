@@ -21,25 +21,27 @@ message AddressData {
     string IPAddress = 5;
     int64 DiscoveryTime = 6;
     string DiscoveredBy = 7;
-    int64 LastJobID = 8;
+    int64 LastScannedTime = 8;
     int64 LastSeenTime = 9;
-    bool IsSOA = 10;
-    bool IsWildcardZone = 11;
-    bool IsHostedService = 12;
-    bool Ignored  = 13;
-    bool Deleted = 14;
+    float ConfidenceScore = 10;
+    bool IsSOA = 11;
+    bool IsWildcardZone = 12;
+    bool IsHostedService = 13;
+    bool Ignored  = 14;
+    bool Deleted = 15;
 }
 
 message AddressFilter {
     int32 OrgID = 1;
     int32 GroupID = 2;
-    int32 Start = 3;
+    int64 Start = 3;
     int32 Limit = 4;
     bool WithIgnored = 5;
     bool IgnoredValue = 6;
-    bool WithDeleted = 7;
-    bool DeletedValue = 8;
+    bool WithLastScannedTime = 7;
+    int64 SinceScannedTime = 8;
 }
+
 message AddressesRequest {
     UserContext UserContext = 1;
     AddressFilter Filter = 2;

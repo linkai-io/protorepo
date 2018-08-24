@@ -17,22 +17,22 @@ service ScanGroup {
 }
 
 message NSModuleConfig {
-    string Name = 1;
+    int32 RequestsPerSecond = 1;
 }
 
 message BruteModuleConfig {
-    string Name = 1;
+    int32 RequestsPerSecond = 1;
     repeated string CustomSubNames = 2;
     int32 MaxDepth = 3;
 }
 
 message PortModuleConfig {
-    string Name = 1;
-    repeated int32 Ports = 2;
+    int32 RequestsPerSecond = 1;
+    repeated int32 CustomPorts = 2;
 }
 
 message WebModuleConfig {
-    string Name = 1;
+    int32 RequestsPerSecond = 1;
     bool TakeScreenShots = 2;
     int32 MaxLinks = 3;
     bool ExtractJS = 4;
@@ -53,7 +53,7 @@ message Group {
     string GroupName = 3;
     int64 CreationTime = 4;
     int32 CreatedBy = 5;
-    bytes OriginalInput = 6;
+    string OriginalInputS3URL = 6;
     int64 ModifiedTime = 7;
     int32 ModifiedBy = 8;
     ModuleConfiguration ModuleConfiguration = 9;
