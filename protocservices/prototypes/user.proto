@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package="gopkg.linkai.io/v1/repos/am/protocservices/prototypes";
+option go_package="github.com/linkai-io/am/protocservices/prototypes";
 
 message UserContext {
     string TraceID = 1;

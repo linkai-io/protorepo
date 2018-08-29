@@ -4,7 +4,7 @@ package scangroup;
 
 import "prototypes/user.proto";
 
-option go_package="gopkg.linkai.io/v1/repos/am/protocservices/scangroup";
+option go_package="github.com/linkai-io/am/protocservices/scangroup";
 
 service ScanGroup {
     rpc Get(GroupRequest) returns (GroupResponse);
@@ -39,12 +39,17 @@ message WebModuleConfig {
     bool FingerprintFrameworks = 5;
 }
 
+message KeywordModuleConfig {
+    repeated string Keywords = 1;
+}
+
 message ModuleConfiguration {
     NSModuleConfig NSConfig = 1;
     BruteModuleConfig BruteConfig = 2;
     PortModuleConfig PortConfig = 3;
     WebModuleConfig WebModuleConfig = 4;
-    repeated int64 DailyScanSchedules = 5;
+    KeywordModuleConfig KeywordModuleConfig = 5;
+    repeated int64 DailyScanSchedules = 6;
 }
 
 message Group {

@@ -5,7 +5,7 @@ package organization;
 import "prototypes/user.proto";
 import "prototypes/org.proto";
 
-option go_package="gopkg.linkai.io/v1/repos/am/protocservices/organization";
+option go_package="github.com/linkai-io/am/protocservices/organization";
 
 service Organization {
     rpc Get(OrgRequest) returns (OrgResponse);

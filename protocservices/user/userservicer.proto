@@ -6,7 +6,7 @@ package scangroup;
 
 import "prototypes/user.proto";
 
-option go_package="gopkg.linkai.io/v1/repos/am/protocservices/user";
+option go_package="github.com/linkai-io/am/protocservices/user";
 
 service UserService {
     rpc Get(UserRequest) returns (UserResponse);

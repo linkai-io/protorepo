@@ -4,7 +4,7 @@ package address;
 
 import "prototypes/user.proto";
 
-option go_package="gopkg.linkai.io/v1/repos/am/protocservices/address";
+option go_package="github.com/linkai-io/am/protocservices/address";
 
 service Address {
     rpc Get(AddressesRequest) returns (stream AddressesResponse);
@@ -24,11 +24,12 @@ message AddressData {
     int64 LastScannedTime = 8;
     int64 LastSeenTime = 9;
     float ConfidenceScore = 10;
-    bool IsSOA = 11;
-    bool IsWildcardZone = 12;
-    bool IsHostedService = 13;
-    bool Ignored  = 14;
-    bool Deleted = 15;
+    float UserConfidenceScore = 11;
+    bool IsSOA = 12;
+    bool IsWildcardZone = 13;
+    bool IsHostedService = 14;
+    bool Ignored  = 15;
+    bool Deleted = 16;
 }
 
 message AddressFilter {
