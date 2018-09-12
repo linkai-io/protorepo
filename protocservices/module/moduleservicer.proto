@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package module;
+
+import "prototypes/address.proto";
+
+option go_package="github.com/linkai-io/am/protocservices/module";
+
+service Module {
+    rpc Analyze(AnalyzeRequest) returns (AnalyzedResponse);
+}
+
+message AnalyzeRequest {
+    AddressData Address = 1;
+}
+
+message AnalyzedResponse {
+    
+}

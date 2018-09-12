@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option go_package="github.com/linkai-io/am/protocservices/prototypes";
+
+message AddressData {
+    int32 OrgID = 1;
+    int64 AddressID = 2;
+    int32 GroupID = 3;
+    string HostAddress = 4;
+    string IPAddress = 5;
+    int64 DiscoveryTime = 6;
+    string DiscoveredBy = 7;
+    int64 LastScannedTime = 8;
+    int64 LastSeenTime = 9;
+    float ConfidenceScore = 10;
+    float UserConfidenceScore = 11;
+    bool IsSOA = 12;
+    bool IsWildcardZone = 13;
+    bool IsHostedService = 14;
+    bool Ignored  = 15;
+    bool Deleted = 16;
+}
+
+message AddressFilter {
+    int32 OrgID = 1;
+    int32 GroupID = 2;
+    int64 Start = 3;
+    int32 Limit = 4;
+    bool WithIgnored = 5;
+    bool IgnoredValue = 6;
+    bool WithLastScannedTime = 7;
+    int64 SinceScannedTime = 8;
+}

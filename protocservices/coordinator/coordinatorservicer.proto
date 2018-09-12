@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package coordinator;
+
+import "prototypes/user.proto";
+
+option go_package="github.com/linkai-io/am/protocservices/coordinator";
+
+service Coordinator {
+    rpc StartGroup(StartGroupRequest) returns (GroupStartedResponse);
+    rpc Register(RegisterRequest) returns (RegisteredResponse);
+}
+
+message StartGroupRequest {
+    UserContext UserContext = 1;
+    int32 GroupID = 2;
+}
+
+message GroupStartedResponse {
+    
+}
+
+message RegisterRequest {
+    string DispatcherID = 1;
+}
+
+message RegisteredResponse {
+    
+}
