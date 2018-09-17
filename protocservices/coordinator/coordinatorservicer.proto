@@ -21,7 +21,8 @@ message GroupStartedResponse {
 }
 
 message RegisterRequest {
-    string DispatcherID = 1;
+    string DispatcherAddr = 1;
+    string DispatcherID = 2;
 }
 
 message RegisteredResponse {
