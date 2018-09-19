@@ -8,7 +8,6 @@ option go_package="github.com/linkai-io/am/protocservices/coordinator";
 
 service Coordinator {
     rpc StartGroup(StartGroupRequest) returns (GroupStartedResponse);
-    rpc Register(RegisterRequest) returns (RegisteredResponse);
 }
 
 message StartGroupRequest {
@@ -17,14 +16,5 @@ message StartGroupRequest {
 }
 
 message GroupStartedResponse {
-    
-}
-
-message RegisterRequest {
-    string DispatcherAddr = 1;
-    string DispatcherID = 2;
-}
-
-message RegisteredResponse {
     
 }
