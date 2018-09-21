@@ -15,5 +15,5 @@ message AnalyzeRequest {
 }
 
 message AnalyzedResponse {
-    
+    repeated AddressData Addresses = 1;
 }
