@@ -19,7 +19,7 @@ message AddressData {
     bool IsHostedService = 14;
     bool Ignored  = 15;
     bool Deleted = 16;
-    int64 FoundFrom = 17;
+    string FoundFrom = 17;
     int32 NSRecord = 18;
     string AddressHash = 19; 
 }

@@ -9,7 +9,7 @@ option go_package="github.com/linkai-io/am/protocservices/address";
 
 service Address {
     rpc Get(AddressesRequest) returns (stream AddressesResponse);
-    rpc Update(stream UpdateAddressRequest) returns (UpdateAddressesResponse);
+    rpc Update(UpdateAddressRequest) returns (UpdateAddressesResponse);
     rpc Delete(DeleteAddressesRequest) returns (DeleteAddressesResponse);
     rpc Count(CountAddressesRequest) returns (CountAddressesResponse);
 }
@@ -37,7 +37,7 @@ message CountAddressesResponse {
 
 message UpdateAddressRequest {
     UserContext UserContext = 1;
-    AddressData Address = 2;
+    repeated AddressData Address = 2;
 }
 
 message UpdateAddressesResponse {

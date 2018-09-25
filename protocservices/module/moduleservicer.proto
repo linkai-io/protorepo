@@ -15,5 +15,6 @@ message AnalyzeRequest {
 }
 
 message AnalyzedResponse {
-    map <string, AddressData> Addresses = 1;
+    AddressData Original = 1;
+    map <string, AddressData> Addresses = 2;
 }
