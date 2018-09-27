@@ -33,4 +33,6 @@ message AddressFilter {
     bool IgnoredValue = 6;
     bool WithLastScannedTime = 7;
     int64 SinceScannedTime = 8;
+    bool WithLastSeenTime = 9;
+    int64 SinceSeenTime = 10;
 }

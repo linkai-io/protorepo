@@ -37,7 +37,7 @@ message CountAddressesResponse {
 
 message UpdateAddressRequest {
     UserContext UserContext = 1;
-    repeated AddressData Address = 2;
+    map <string, AddressData> Address = 2;
 }
 
 message UpdateAddressesResponse {
