@@ -11,6 +11,7 @@ service ScanGroup {
     rpc Create(NewGroupRequest) returns (GroupCreatedResponse);
     rpc Update(UpdateGroupRequest) returns (GroupUpdatedResponse);
     rpc Delete(DeleteGroupRequest) returns (GroupDeletedResponse);
+    rpc AllGroups(AllGroupsRequest) returns (stream AllGroupsResponse);
     rpc Groups(GroupsRequest) returns (stream GroupResponse);
     rpc Pause(PauseGroupRequest) returns (GroupPausedResponse);
     rpc Resume(ResumeGroupRequest) returns (GroupResumedResponse);
@@ -66,6 +67,11 @@ message Group {
     bool Deleted = 11;
 }
 
+message ScanGroupFilter {
+    bool WithPaused = 1;
+    bool PausedValue = 2;
+}
+
 message NewGroupRequest {
     UserContext UserContext = 1;
     Group Group = 2;
@@ -105,6 +111,15 @@ message GroupRequest {
     RequestBy By = 2;
     int32 GroupID = 3;
     string GroupName = 4;
+}
+
+message AllGroupsRequest {
+    UserContext UserContext = 1;
+    ScanGroupFilter Filter = 2;
+}
+
+message AllGroupsResponse {
+    Group Group = 1;
 }
 
 message GroupsRequest {
