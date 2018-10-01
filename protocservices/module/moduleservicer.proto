@@ -3,6 +3,7 @@ syntax = "proto3";
 package module;
 
 import "prototypes/address.proto";
+import "prototypes/user.proto";
 
 option go_package="github.com/linkai-io/am/protocservices/module";
 
@@ -11,7 +12,8 @@ service Module {
 }
 
 message AnalyzeRequest {
-    AddressData Address = 1;
+    UserContext UserContext = 1;
+    AddressData Address = 2;
 }
 
 message AnalyzedResponse {
