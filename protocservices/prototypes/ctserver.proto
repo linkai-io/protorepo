@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option go_package="github.com/linkai-io/am/protocservices/prototypes";
+
+message CTServer {
+    int32 ID = 1;
+    string URL = 2;
+    int64 StartIndex = 3;
+	int64 Index = 4;
+    int64 IndexUpdated = 5;
+    int32 Step = 6;
+    int64 TreeSize = 7;
+    int64 TreeSizeUpdated = 8;
+}

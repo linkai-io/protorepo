@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package certtranscoordinator;
+
+option go_package="github.com/linkai-io/am/protocservices/certtranscoordinator";
+
+service CertTransCoordinator {
+    rpc GetStatus(GetStatusRequest) returns (StatusResponse);
+    rpc SetStatus(SetStatusRequest) returns (StatusResponse);
+    rpc AddWorker(AddWorkerRequest) returns (WorkerAddedResponse);
+    rpc RemoveWorker(RemoveWorkerRequest) returns (WorkerRemovedResponse);
+    rpc UpdateDuration(UpdateDurationRequest) returns (DurationUpdatedResponse);
+}
+
+enum CTStatus {
+  UNKNOWN = 0;
+  STOPPED = 1;
+  RUNNING = 2;
+}
+
+message GetStatusRequest {
+}
+
+message SetStatusRequest {
+    CTStatus Status = 1;
+}
+
+message StatusResponse {
+    CTStatus Status = 1;
+    int32 WorkerCount = 2;
+}
+
+message AddWorkerRequest {
+    int32 WorkerCount = 1;
+}
+
+message WorkerAddedResponse {
+
+}
+
+message RemoveWorkerRequest {
+    int32 WorkerCount = 1;
+}
+
+message WorkerRemovedResponse {
+
+}
+
+
+message UpdateDurationRequest {
+    int64 NewDuration = 1;
+}
+
+message DurationUpdatedResponse {
+
+}

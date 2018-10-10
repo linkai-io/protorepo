@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package ctworker;
+
+import "prototypes/ctserver.proto";
+
+option go_package="github.com/linkai-io/am/protocservices/ctworker";
+
+service CTWorker {
+    rpc GetCTCertificates(GetCTCertificatesRequest) returns (GetCTCertificatesResponse);
+    rpc SetExtractors(SetExtractorsRequest) returns (ExtractorsSetResponse);
+}
+
+message GetCTCertificatesRequest {
+    CTServer Server = 1;
+}
+
+message GetCTCertificatesResponse {
+    CTServer Server = 1;
+}
+
+message SetExtractorsRequest {
+    int32 NumExtractors = 1;
+}
+
+message ExtractorsSetResponse {
+    
+}
