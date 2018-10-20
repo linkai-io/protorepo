@@ -1,0 +1,95 @@
+syntax = "proto3";
+
+option go_package="github.com/linkai-io/am/protocservices/prototypes";
+
+import "prototypes/address.proto";
+
+message WebCertificate {
+    int32 OrgID = 1;
+    int32 GroupID = 2;
+    int64 CertID = 3;
+    string Protocol = 4;
+    string KeyExchange = 5;
+    string KeyExchangeGroup = 6; 
+    string Cipher = 7;
+    string Mac = 8;
+    int32 CertificateId = 9;
+    string SubjectName = 10;
+    repeated string SanList = 11;
+    string Issuer = 12;
+    int64 ValidFrom = 13;
+    int64 ValidTo = 14;
+    string CertificateTransparencyCompliance = 15;
+    bool IsDeleted = 16;
+}
+
+message HTTPResponse {
+    int64 ResponseID = 1;
+    int32 OrgID = 2;
+    int32 GroupID = 3;
+    int64 AddressID = 4;
+    string Scheme = 5;
+	string HostAddress = 6;
+	string IPAddress = 7;
+	string ResponsePort = 8;
+	string RequestedPort = 9;
+	int32 Status = 10;
+	string StatusText = 11;
+	string URL = 12;
+	map <string, string> Headers = 13;
+	string MimeType = 14;
+	string RawBodyLink = 15;
+	string RawBodyHash = 16;
+	int64 ResponseTimestamp = 17;
+	bool IsDocument = 18;  
+	WebCertificate WebCertificate = 19;
+    bool IsDeleted = 20;
+}
+
+message WebData {
+    AddressData Address = 1;
+    repeated HTTPResponse Responses = 2;
+    string SnapshotLink = 3;
+    string SerializedDOMHash = 4;
+    string SerializedDOMLink = 5;
+    int64 ResponseTimestamp = 6;
+}
+
+message WebSnapshot {
+    int32 OrgID = 1;
+    int32 GroupID = 2;
+    int64 SnapshotID = 3;
+    string SnapshotLink = 4;
+    string SerializedDOMLink = 5;
+    int64 ResponseTimestamp = 6;
+    bool IsDeleted = 7;
+}
+
+message WebResponseFilter {
+    int32 OrgID = 1;
+    int32 GroupID = 2;
+    bool WithResponseTime = 3;
+    int64 SinceResponseTime = 4;
+    int64 Start = 5;
+    int32 Limit = 6;
+}
+
+message WebCertificateFilter {
+    int32 OrgID = 1;
+    int32 GroupID = 2;
+    bool WithResponseTime = 3;
+    int64 SinceResponseTime = 4;
+    bool WithValidTo = 5;
+    int64 ValidToTime = 6;
+    int64 Start = 7;
+    int32 Limit = 8;
+}
+
+message WebSnapshotFilter {
+    int32 OrgID = 1;
+    int32 GroupID = 2;
+    bool WithResponseTime = 3;
+    int64 SinceResponseTime = 4;
+    int64 Start = 5;
+    int32 Limit = 6;
+}

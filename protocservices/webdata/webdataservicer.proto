@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package webdata;
+
+import "prototypes/user.proto";
+import "prototypes/web.proto";
+
+option go_package="github.com/linkai-io/am/protocservices/webdata";
+
+service WebData {
+    rpc GetSnapshots(GetSnapshotsRequest) returns (GetSnapshotsResponse);
+    rpc GetResponses(GetResponsesRequest) returns (GetResponsesResponse);
+    rpc GetCertificates(GetCertificatesRequest) returns (GetCertificatesResponse);
+    rpc Add(AddRequest) returns (AddedResponse);
+}
+
+
+message GetSnapshotsRequest {
+    UserContext UserContext = 1;
+    WebSnapshotFilter Filter = 2;
+}
+
+message GetSnapshotsResponse {
+    int32 OrgID = 1;
+    repeated WebSnapshot Snapshots = 2;
+}
+
+message GetCertificatesRequest {
+    UserContext UserContext = 1;
+    WebCertificateFilter Filter = 2;
+}
+
+message GetCertificatesResponse {
+    int32 OrgID = 1;
+    repeated WebCertificate Certificates = 2;
+}
+
+message GetResponsesRequest {
+    UserContext UserContext = 1;
+    WebResponseFilter Filter = 2;
+}
+
+message GetResponsesResponse {
+    int32 OrgID = 1;
+    repeated HTTPResponse Responses = 2;
+}
+
+message AddRequest {
+    UserContext UserContext = 1;
+    WebData Data = 2;
+}
+
+message AddedResponse {
+    int32 OrgID = 1;
+}
