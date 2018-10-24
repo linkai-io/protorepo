@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package certtranscoordinator;
 
-option go_package="github.com/linkai-io/am/protocservices/certtranscoordinator";
+option go_package="github.com/linkai-io/bigdata/protocservices/certtranscoordinator";
 
 service CertTransCoordinator {
     rpc GetStatus(GetStatusRequest) returns (StatusResponse);

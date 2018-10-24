@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-option go_package="github.com/linkai-io/am/protocservices/prototypes";
+option go_package="github.com/linkai-io/bigdata/protocservices/prototypes";
 
 message CTServer {
-    int32 ID = 1;
+    string ID = 1;
     string URL = 2;
     int64 StartIndex = 3;
 	int64 Index = 4;

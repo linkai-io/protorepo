@@ -7,20 +7,23 @@ import "prototypes/address.proto";
 message WebCertificate {
     int32 OrgID = 1;
     int32 GroupID = 2;
-    int64 CertID = 3;
-    string Protocol = 4;
-    string KeyExchange = 5;
-    string KeyExchangeGroup = 6; 
-    string Cipher = 7;
-    string Mac = 8;
-    int32 CertificateId = 9;
-    string SubjectName = 10;
-    repeated string SanList = 11;
-    string Issuer = 12;
-    int64 ValidFrom = 13;
-    int64 ValidTo = 14;
-    string CertificateTransparencyCompliance = 15;
-    bool IsDeleted = 16;
+    int64 CertificateID = 3;
+    int64 ResponseTimestamp = 4;
+    string HostAddress = 5;
+    string Port = 6;
+    string Protocol = 7;
+    string KeyExchange = 8;
+    string KeyExchangeGroup = 9; 
+    string Cipher = 10;
+    string Mac = 11;
+    int32 CertificateValue = 12;
+    string SubjectName = 13;
+    repeated string SanList = 14;
+    string Issuer = 15;
+    int64 ValidFrom = 16;
+    int64 ValidTo = 17;
+    string CertificateTransparencyCompliance = 18;
+    bool IsDeleted = 19;
 }
 
 message HTTPResponse {
@@ -58,11 +61,12 @@ message WebData {
 message WebSnapshot {
     int32 OrgID = 1;
     int32 GroupID = 2;
-    int64 SnapshotID = 3;
-    string SnapshotLink = 4;
-    string SerializedDOMLink = 5;
-    int64 ResponseTimestamp = 6;
-    bool IsDeleted = 7;
+    int64 AddressID = 3;
+    int64 SnapshotID = 4;
+    string SnapshotLink = 5;
+    string SerializedDOMLink = 6;
+    int64 ResponseTimestamp = 7;
+    bool IsDeleted = 8;
 }
 
 message WebResponseFilter {
