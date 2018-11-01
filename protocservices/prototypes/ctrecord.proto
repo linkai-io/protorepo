@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option go_package="github.com/linkai-io/am/protocservices/prototypes";
+
+message CTRecord {
+    int64 CertificateID = 1;
+    int64 InsertedTime = 2;
+    string CertHash = 3;
+    string SerialNumber = 4;
+    int64 NotBefore = 5;
+    int64 NotAfter = 6;
+    string Country = 7;
+    string Organization = 8;
+    string OrganizationalUnit = 9;
+    string CommonName = 10;
+    string VerifiedDNSNames = 11;
+    string UnverifiedDNSNames = 12;
+    string IPAddresses = 13;
+    string EmailAddresses = 14;
+    string ETLD = 15;
+}

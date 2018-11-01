@@ -7,15 +7,8 @@ import "prototypes/ctserver.proto";
 option go_package="github.com/linkai-io/bigdata/protocservices/ctworker";
 
 service CTWorker {
-    rpc Shutdown(ShutdownRequest) returns (ShutdownResponse);
     rpc GetCTCertificates(GetCTCertificatesRequest) returns (GetCTCertificatesResponse);
     rpc SetExtractors(SetExtractorsRequest) returns (ExtractorsSetResponse);
-}
-
-message ShutdownRequest {
-}
-
-message ShutdownResponse {
 }
 
 message GetCTCertificatesRequest {

@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package bigdata;
+
+import "prototypes/user.proto";
+import "prototypes/ctrecord.proto";
+
+option go_package="github.com/linkai-io/am/protocservices/bigdata";
+
+service BigData {
+    rpc GetCT(GetCTRequest) returns (GetCTResponse);
+    rpc AddCT(AddCTRequest) returns (CTAddedResponse);
+    rpc DeleteCT(DeleteCTRequest) returns (CTDeletedResponse);
+}
+
+
+message GetCTRequest {
+    UserContext UserContext = 1;
+    string ETLD = 2;
+}
+
+message GetCTResponse {
+    int64 Time = 1;
+    map<string, CTRecord> records = 2;
+}
+
+message AddCTRequest {
+    UserContext UserContext = 1;
+    string ETLD = 2;
+    int64 QueryTime = 3;
+    map<string, CTRecord> records = 4;
+}
+
+message CTAddedResponse {
+}
+
+message DeleteCTRequest {
+    UserContext UserContext = 1;
+    string ETLD = 2;
+}
+
+message CTDeletedResponse {
+
+}

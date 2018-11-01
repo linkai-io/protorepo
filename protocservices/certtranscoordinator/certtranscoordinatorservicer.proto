@@ -5,17 +5,25 @@ package certtranscoordinator;
 option go_package="github.com/linkai-io/bigdata/protocservices/certtranscoordinator";
 
 service CertTransCoordinator {
+    rpc Shutdown(ShutdownRequest) returns (ShutdownResponse);
     rpc GetStatus(GetStatusRequest) returns (StatusResponse);
     rpc SetStatus(SetStatusRequest) returns (StatusResponse);
     rpc AddWorker(AddWorkerRequest) returns (WorkerAddedResponse);
     rpc RemoveWorker(RemoveWorkerRequest) returns (WorkerRemovedResponse);
-    rpc UpdateDuration(UpdateDurationRequest) returns (DurationUpdatedResponse);
 }
 
 enum CTStatus {
   UNKNOWN = 0;
   STOPPED = 1;
   RUNNING = 2;
+}
+
+message ShutdownRequest {
+
+}
+
+message ShutdownResponse {
+    
 }
 
 message GetStatusRequest {
@@ -43,14 +51,5 @@ message RemoveWorkerRequest {
 }
 
 message WorkerRemovedResponse {
-
-}
-
-
-message UpdateDurationRequest {
-    int64 NewDuration = 1;
-}
-
-message DurationUpdatedResponse {
 
 }
