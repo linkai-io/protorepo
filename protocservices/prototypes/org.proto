@@ -8,21 +8,23 @@ message Org {
 	string OrgName = 3;
 	string OwnerEmail = 4;
 	string UserPoolID = 5;
-	string IdentityPoolID = 6;
-	string FirstName = 7;
-	string LastName = 8;
-	string Phone = 9;
-	string Country = 10;
-	string StatePrefecture = 11;
-	string Street = 12;
-	string Address1 = 13;
-	string Address2 = 14;
-	string City = 15;
-	string PostalCode = 16;
-	int64 CreationTime = 17;
-	int32 StatusID = 18;
-	bool Deleted = 19;
-	int32 SubscriptionID = 20;
+	string UserPoolAppClientID = 6;
+	string UserPoolAppClientSecret = 7;
+	string IdentityPoolID = 8;
+	string FirstName = 9;
+	string LastName = 10;
+	string Phone = 11;
+	string Country = 12;
+	string StatePrefecture = 13;
+	string Street = 14;
+	string Address1 = 15;
+	string Address2 = 16;
+	string City = 17;
+	string PostalCode = 18;
+	int64 CreationTime = 19;
+	int32 StatusID = 20;
+	bool Deleted = 21;
+	int32 SubscriptionID = 22;
 }
 
 message OrgFilter {
