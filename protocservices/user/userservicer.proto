@@ -20,11 +20,13 @@ message UserRequest {
     enum RequestBy {
         USERCID = 0;
         USERID = 1;
+        USEREMAIL = 2;
     }
     UserContext UserContext = 1;
     RequestBy By = 2;
     string UserCID = 3;
     int32 UserID = 4;
+    string UserEmail = 5;
 }
 
 message UserResponse {

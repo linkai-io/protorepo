@@ -25,6 +25,7 @@ message Org {
 	int32 StatusID = 20;
 	bool Deleted = 21;
 	int32 SubscriptionID = 22;
+	string UserPoolJWK = 23;
 }
 
 message OrgFilter {
