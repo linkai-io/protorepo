@@ -45,6 +45,7 @@ message OrgListResponse {
 message CreateOrgRequest {
     UserContext UserContext = 1;
     Org Org = 2;
+    string UserCID = 3;
 }
 
 message OrgCreatedResponse {

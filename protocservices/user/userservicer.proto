@@ -21,12 +21,14 @@ message UserRequest {
         USERCID = 0;
         USERID = 1;
         USEREMAIL = 2;
+        USERWITHORGID = 3;
     }
     UserContext UserContext = 1;
     RequestBy By = 2;
     string UserCID = 3;
     int32 UserID = 4;
     string UserEmail = 5;
+    int32 OrgID = 6;
 }
 
 message UserResponse {
