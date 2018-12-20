@@ -20,12 +20,14 @@ message OrgRequest {
         ORGNAME = 0;
         ORGCID = 1;
         ORGID = 2;
+        ORGCLIENTAPPID = 3;
     }
     UserContext UserContext = 1;
     RequestBy By = 2;
     string OrgName = 3;
     string OrgCID = 4;
     int32 OrgID = 5;
+    string OrgClientAppID = 6;
 }
 
 message OrgResponse {
