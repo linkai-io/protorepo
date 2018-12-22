@@ -58,13 +58,15 @@ message Group {
     int32 GroupID = 2;
     string GroupName = 3;
     int64 CreationTime = 4;
-    int32 CreatedBy = 5;
+    string CreatedBy = 5;
     string OriginalInputS3URL = 6;
     int64 ModifiedTime = 7;
-    int32 ModifiedBy = 8;
+    string ModifiedBy = 8;
     ModuleConfiguration ModuleConfiguration = 9;
     bool Paused = 10;
     bool Deleted = 11;
+    int32 CreatedByID = 12;
+    int32 ModifiedByID = 13;
 }
 
 message ScanGroupFilter {

@@ -8,6 +8,8 @@ message UserContext {
 	int32 UserID = 3;
 	string IPAddress = 4;
 	repeated string Roles = 5;
+	string OrgCID = 6;
+	string UserCID = 7;
 }
 
 message User {
