@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package metrics;
+
+option go_package="github.com/linkai-io/am/protocservices/metrics";
+
+message LoadRequest {
+}
+
+message LoadResponse {
+  int64 score = 1;
+}
+
+service LoadReport {
+  rpc Load(LoadRequest) returns (LoadResponse);
+}

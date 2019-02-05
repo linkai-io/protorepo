@@ -8,6 +8,7 @@ option go_package="github.com/linkai-io/am/protocservices/coordinator";
 
 service Coordinator {
     rpc StartGroup(StartGroupRequest) returns (GroupStartedResponse);
+    rpc StopGroup(StopGroupRequest) returns (GroupStoppedResponse);
 }
 
 message StartGroupRequest {
@@ -17,4 +18,13 @@ message StartGroupRequest {
 
 message GroupStartedResponse {
     
+}
+
+message StopGroupRequest {
+    UserContext UserContext = 1;
+    int32 GroupID = 2;
+}
+
+message GroupStoppedResponse {
+    string message = 1;
 }

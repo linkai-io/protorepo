@@ -47,6 +47,8 @@ message HTTPResponse {
 	bool IsDocument = 18;  
 	WebCertificate WebCertificate = 19;
     bool IsDeleted = 20;
+    string AddressIDHostAddress = 21;
+    string AddressIDIPAddress = 22;
 }
 
 message WebData {
@@ -67,6 +69,9 @@ message WebSnapshot {
     string SerializedDOMLink = 6;
     int64 ResponseTimestamp = 7;
     bool IsDeleted = 8;
+    string SerializedDOMHash = 9;
+    string AddressIDHostAddress = 10;
+    string AddressIDIPAddress = 11;
 }
 
 message WebResponseFilter {

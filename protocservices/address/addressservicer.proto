@@ -11,6 +11,7 @@ service Address {
     rpc Get(AddressesRequest) returns (stream AddressesResponse);
     rpc Update(UpdateAddressRequest) returns (UpdateAddressesResponse);
     rpc Delete(DeleteAddressesRequest) returns (DeleteAddressesResponse);
+    rpc Ignore(IgnoreAddressesRequest) returns (IgnoreAddressesResponse);
     rpc Count(CountAddressesRequest) returns (CountAddressesResponse);
 }
 
@@ -52,5 +53,16 @@ message DeleteAddressesRequest {
 }
 
 message DeleteAddressesResponse {
+    int32 OrgID = 1;
+}
+
+message IgnoreAddressesRequest {
+    UserContext UserContext = 1;
+    int32 GroupID = 2;
+    repeated int64 AddressIDs = 3;
+    bool IgnoreValue = 4;
+}
+
+message IgnoreAddressesResponse {
     int32 OrgID = 1;
 }
