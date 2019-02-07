@@ -11,6 +11,9 @@ service BigData {
     rpc GetCT(GetCTRequest) returns (GetCTResponse);
     rpc AddCT(AddCTRequest) returns (CTAddedResponse);
     rpc DeleteCT(DeleteCTRequest) returns (CTDeletedResponse);
+    rpc GetCTSubdomains(GetCTSubdomainsRequest) returns (GetCTSubdomainsResponse);
+    rpc AddCTSubdomains(AddCTSubdomainsRequest) returns (CTSubdomainsAddedResponse);
+    rpc DeleteCTSubdomains(DeleteCTSubdomainsRequest) returns (CTSubdomainsDeletedResponse);
 }
 
 
@@ -40,5 +43,35 @@ message DeleteCTRequest {
 }
 
 message CTDeletedResponse {
+
+}
+
+
+message GetCTSubdomainsRequest {
+    UserContext UserContext = 1;
+    string ETLD = 2;
+}
+
+message GetCTSubdomainsResponse {
+    int64 Time = 1;
+    map<string, CTSubdomain> records = 2;
+}
+
+message AddCTSubdomainsRequest {
+    UserContext UserContext = 1;
+    string ETLD = 2;
+    int64 QueryTime = 3;
+    map<string, CTSubdomain> records = 4;
+}
+
+message CTSubdomainsAddedResponse {
+}
+
+message DeleteCTSubdomainsRequest {
+    UserContext UserContext = 1;
+    string ETLD = 2;
+}
+
+message CTSubdomainsDeletedResponse {
 
 }
