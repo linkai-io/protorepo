@@ -24,6 +24,14 @@ message AddressData {
     string AddressHash = 19; 
 }
 
+message HostListData {
+    int32 OrgID = 1;
+    int32 GroupID = 2;
+    string ETLD = 3;
+    string HostAddress = 4;
+    repeated string IPAddresses = 5;
+}
+
 message AddressFilter {
     int32 OrgID = 1;
     int32 GroupID = 2;
@@ -35,4 +43,9 @@ message AddressFilter {
     int64 SinceScannedTime = 8;
     bool WithLastSeenTime = 9;
     int64 SinceSeenTime = 10;
+    bool WithIsWildcard = 11;
+    bool IsWildcardValue = 12;
+    string MatchesHost = 13;
+    string MatchesIP = 14;
+    int32 NSRecord = 15;
 }
