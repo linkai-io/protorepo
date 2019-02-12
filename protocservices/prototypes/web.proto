@@ -4,6 +4,28 @@ option go_package="github.com/linkai-io/am/protocservices/prototypes";
 
 import "prototypes/address.proto";
 
+message URLListResponse {
+    int32 OrgID = 1;
+    int32 GroupID = 2;
+    string AddressIDHostAddress = 3;
+    string AddressIDIPAddress = 4;
+    int64 URLRequestTimestamp = 5;
+    repeated string URLs = 6;
+    repeated string RawBodyLinks = 7;
+    repeated string MimeTypes = 8;
+}
+
+message WebData {
+    AddressData Address = 1;
+    repeated HTTPResponse Responses = 2;
+    string SnapshotLink = 3;
+    string SerializedDOMHash = 4;
+    string SerializedDOMLink = 5;
+    int64 ResponseTimestamp = 6;
+    int64 URLRequestTimestamp = 7;
+}
+
+
 message WebCertificate {
     int32 OrgID = 1;
     int32 GroupID = 2;
@@ -49,15 +71,7 @@ message HTTPResponse {
     bool IsDeleted = 20;
     string AddressIDHostAddress = 21;
     string AddressIDIPAddress = 22;
-}
-
-message WebData {
-    AddressData Address = 1;
-    repeated HTTPResponse Responses = 2;
-    string SnapshotLink = 3;
-    string SerializedDOMHash = 4;
-    string SerializedDOMLink = 5;
-    int64 ResponseTimestamp = 6;
+    int64 URLRequestTimestamp = 23;
 }
 
 message WebSnapshot {
@@ -81,6 +95,11 @@ message WebResponseFilter {
     int64 SinceResponseTime = 4;
     int64 Start = 5;
     int32 Limit = 6;
+    string MimeType = 7;
+    string WithHeader = 8;
+    string WithoutHeader = 9;
+    bool WithLatestOnly = 10;
+    bool LatestOnlyValue = 11;
 }
 
 message WebCertificateFilter {
@@ -89,9 +108,11 @@ message WebCertificateFilter {
     bool WithResponseTime = 3;
     int64 SinceResponseTime = 4;
     bool WithValidTo = 5;
-    int64 ValidToTime = 6;
+    int64 ValidToValue = 6;
     int64 Start = 7;
     int32 Limit = 8;
+    bool WithValidFrom = 9;
+    int64 ValidFromValue = 10;
 }
 
 message WebSnapshotFilter {
@@ -101,4 +122,8 @@ message WebSnapshotFilter {
     int64 SinceResponseTime = 4;
     int64 Start = 5;
     int32 Limit = 6;
+    bool WithLatestOnly = 7;
+    bool LatestOnlyValue = 8;
+    string MatchesHost = 9;
+    string MatchesIP = 10;
 }

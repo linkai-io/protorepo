@@ -11,6 +11,7 @@ service WebData {
     rpc GetSnapshots(GetSnapshotsRequest) returns (GetSnapshotsResponse);
     rpc GetResponses(GetResponsesRequest) returns (GetResponsesResponse);
     rpc GetCertificates(GetCertificatesRequest) returns (GetCertificatesResponse);
+    rpc GetURLList(GetURLListRequest) returns (GetURLListResponse);
     rpc Add(AddRequest) returns (AddedResponse);
 }
 
@@ -43,6 +44,16 @@ message GetResponsesRequest {
 message GetResponsesResponse {
     int32 OrgID = 1;
     repeated HTTPResponse Responses = 2;
+}
+
+message GetURLListRequest {
+    UserContext UserContext = 1;
+    WebResponseFilter Filter = 2;
+}
+
+message GetURLListResponse {
+    int32 OrgID = 1;
+    URLListResponse URLList = 2;
 }
 
 message AddRequest {

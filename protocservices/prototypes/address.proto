@@ -30,6 +30,7 @@ message HostListData {
     string ETLD = 3;
     string HostAddress = 4;
     repeated string IPAddresses = 5;
+    repeated int64 AddressIDs = 6;
 }
 
 message AddressFilter {
@@ -45,7 +46,9 @@ message AddressFilter {
     int64 SinceSeenTime = 10;
     bool WithIsWildcard = 11;
     bool IsWildcardValue = 12;
-    string MatchesHost = 13;
-    string MatchesIP = 14;
-    int32 NSRecord = 15;
+    bool WithIsHostedService = 13;
+    bool IsHostedServiceValue = 14;
+    string MatchesHost = 15;
+    string MatchesIP = 16;
+    int32 NSRecord = 17;
 }
