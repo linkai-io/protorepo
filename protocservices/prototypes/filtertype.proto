@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option go_package="github.com/linkai-io/am/protocservices/prototypes";
+
+message FilterType {
+    map<string, Int32Filter> Int32Filters = 1;
+    map<string, Int64Filter> Int64Filters = 2;
+    map<string, StringFilter> StringFilters = 3;
+    map<string, BoolFilter> BoolFilters = 4;
+    map<string, FloatFilter> FloatFilters = 5;
+}
+
+message Int32Filter {
+    repeated int32 value = 1; 
+}
+
+message Int64Filter {
+    repeated int64 value = 1; 
+}
+
+message StringFilter {
+    repeated string value = 1;
+}
+
+message BoolFilter {
+    repeated bool value = 1;
+}
+
+message FloatFilter {
+    repeated float value = 1;
+}

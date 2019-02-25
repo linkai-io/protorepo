@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "prototypes/filtertype.proto";
+
 option go_package="github.com/linkai-io/am/protocservices/prototypes";
 
 message Org {
@@ -31,11 +33,5 @@ message Org {
 message OrgFilter {
 	int32 Start = 1;
 	int32 Limit = 2;
-	bool WithSubcription = 3;
-	bool SubValue = 4;
-	int64 SinceCreationTime = 5;
-	bool WithStatus = 6;
-	bool StatusValue = 7;
-	bool WithDeleted = 8;
-	bool DeletedValue = 9;
+	FilterType Filters = 3;
 }

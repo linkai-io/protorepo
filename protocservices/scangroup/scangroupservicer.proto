@@ -3,6 +3,7 @@ syntax = "proto3";
 package scangroup;
 
 import "prototypes/user.proto";
+import "prototypes/filtertype.proto";
 
 option go_package="github.com/linkai-io/am/protocservices/scangroup";
 
@@ -15,6 +16,9 @@ service ScanGroup {
     rpc Groups(GroupsRequest) returns (stream GroupResponse);
     rpc Pause(PauseGroupRequest) returns (GroupPausedResponse);
     rpc Resume(ResumeGroupRequest) returns (GroupResumedResponse);
+    rpc GroupStats(GroupStatsRequest) returns (GroupStatsResponse);
+    rpc UpdateStats(UpdateStatsRequest) returns (StatsUpdatedResponse);
+    
 }
 
 message NSModuleConfig {
@@ -70,8 +74,19 @@ message Group {
 }
 
 message ScanGroupFilter {
-    bool WithPaused = 1;
-    bool PausedValue = 2;
+    int64 Start = 1;
+    int32 Limit = 2;
+    FilterType Filters = 3;
+}
+
+message GroupStats {
+    int32 OrgID = 1;
+    int32 GroupID = 2;
+    int32 ActiveAddresses = 3;
+    int32 BatchSize = 4;
+    int64 LastUpdated = 5;
+    int64 BatchStart = 6;
+    int64 BatchEnd = 7;
 }
 
 message NewGroupRequest {
@@ -151,4 +166,22 @@ message ResumeGroupRequest {
 message GroupResumedResponse {
     int32 OrgID = 1;
     int32 GroupID = 2;
+}
+
+message GroupStatsRequest {
+    UserContext UserContext = 1;
+}
+
+message GroupStatsResponse {
+    int32 OrgID = 1;
+    map<int32, GroupStats> Stats = 2;
+}
+
+message UpdateStatsRequest {
+    UserContext UserContext = 1;
+    GroupStats Stats = 2;
+}
+
+message StatsUpdatedResponse {
+    int32 OrgID = 1;
 }

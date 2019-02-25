@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "prototypes/filtertype.proto";
+
 option go_package="github.com/linkai-io/am/protocservices/prototypes";
 
 message UserContext {
@@ -29,9 +31,5 @@ message UserFilter {
 	int32 Start = 1;
 	int32 Limit = 2;
 	int32 OrgID = 3;
-	bool WithStatus = 4;
-	int32 StatusValue = 5;
-	bool WithDeleted = 6;
-	bool DeletedValue = 7;
-	int64 SinceCreationTime = 8;
+	FilterType Filters = 4;
 }

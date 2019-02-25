@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "prototypes/filtertype.proto";
+
 option go_package="github.com/linkai-io/am/protocservices/prototypes";
 
 message AddressData {
@@ -38,17 +40,5 @@ message AddressFilter {
     int32 GroupID = 2;
     int64 Start = 3;
     int32 Limit = 4;
-    bool WithIgnored = 5;
-    bool IgnoredValue = 6;
-    bool WithLastScannedTime = 7;
-    int64 SinceScannedTime = 8;
-    bool WithLastSeenTime = 9;
-    int64 SinceSeenTime = 10;
-    bool WithIsWildcard = 11;
-    bool IsWildcardValue = 12;
-    bool WithIsHostedService = 13;
-    bool IsHostedServiceValue = 14;
-    string MatchesHost = 15;
-    string MatchesIP = 16;
-    int32 NSRecord = 17;
+    FilterType Filters = 5;
 }

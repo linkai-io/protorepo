@@ -53,7 +53,7 @@ message GetURLListRequest {
 
 message GetURLListResponse {
     int32 OrgID = 1;
-    URLListResponse URLList = 2;
+    repeated URLListResponse URLList = 2;
 }
 
 message AddRequest {
