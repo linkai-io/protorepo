@@ -10,6 +10,8 @@ option go_package="github.com/linkai-io/am/protocservices/address";
 service Address {
     rpc Get(AddressesRequest) returns (stream AddressesResponse);
     rpc GetHostList(HostListRequest) returns (stream HostListResponse);
+    rpc OrgStats(OrgStatsRequest) returns (OrgStatsResponse);
+    rpc GroupStats(GroupStatsRequest) returns (GroupStatsResponse);
     rpc Update(UpdateAddressRequest) returns (UpdateAddressesResponse);
     rpc Delete(DeleteAddressesRequest) returns (DeleteAddressesResponse);
     rpc Ignore(IgnoreAddressesRequest) returns (IgnoreAddressesResponse);
@@ -34,6 +36,25 @@ message HostListRequest {
 message HostListResponse {
     int32 OrgID = 1;
     HostListData HostList = 2;
+}
+
+message OrgStatsRequest {
+    UserContext UserContext = 1;
+}
+
+message OrgStatsResponse {
+    int32 OrgID = 1;
+    repeated ScanGroupAddressStats GroupStats = 2;
+}
+
+message GroupStatsRequest {
+    UserContext UserContext = 1;
+    int32 GroupID = 2;
+}
+
+message GroupStatsResponse {
+    int32 OrgID = 1;
+    ScanGroupAddressStats GroupStats = 2;
 }
 
 message CountAddressesRequest {

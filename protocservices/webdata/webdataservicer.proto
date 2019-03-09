@@ -8,6 +8,8 @@ import "prototypes/web.proto";
 option go_package="github.com/linkai-io/am/protocservices/webdata";
 
 service WebData {
+    rpc OrgStats(OrgStatsRequest) returns (OrgStatsResponse);
+    rpc GroupStats(GroupStatsRequest) returns (GroupStatsResponse);
     rpc GetSnapshots(GetSnapshotsRequest) returns (GetSnapshotsResponse);
     rpc GetResponses(GetResponsesRequest) returns (GetResponsesResponse);
     rpc GetCertificates(GetCertificatesRequest) returns (GetCertificatesResponse);
@@ -15,6 +17,25 @@ service WebData {
     rpc Add(AddRequest) returns (AddedResponse);
 }
 
+
+message OrgStatsRequest {
+    UserContext UserContext = 1;
+}
+
+message OrgStatsResponse {
+    int32 OrgID = 1;
+    repeated ScanGroupWebDataStats GroupStats = 2;
+}
+
+message GroupStatsRequest {
+    UserContext UserContext = 1;
+    int32 GroupID = 2;
+}
+
+message GroupStatsResponse {
+    int32 OrgID = 1;
+    ScanGroupWebDataStats GroupStats = 2;
+}
 
 message GetSnapshotsRequest {
     UserContext UserContext = 1;

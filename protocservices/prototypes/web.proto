@@ -5,6 +5,15 @@ option go_package="github.com/linkai-io/am/protocservices/prototypes";
 import "prototypes/address.proto";
 import "prototypes/filtertype.proto";
 
+message ScanGroupWebDataStats {
+    int32 OrgID = 1;
+    int32 GroupID = 2;
+    int32 ExpiringCerts15Days = 3;
+    int32 ExpiringCerts30Days = 4;
+    int32 UniqueWebServers = 5;
+    map<string, int32> ServerTypes = 6;
+}
+
 message URLData {
     int64 ResponseID = 1;
     string URL = 2;
@@ -21,6 +30,12 @@ message URLListResponse {
     repeated URLData URLs = 6;
 }
 
+message WebTech {
+    string Matched = 1;
+    string Version = 2;
+    string Location = 3;
+}
+
 message WebData {
     AddressData Address = 1;
     repeated HTTPResponse Responses = 2;
@@ -35,8 +50,8 @@ message WebData {
     string IPAddress = 11;
     string Scheme = 12;
     int32 ResponsePort = 13;
+    map<string, WebTech> DetectedTech = 14;
 }
-
 
 message WebCertificate {
     int32 OrgID = 1;
@@ -84,6 +99,8 @@ message HTTPResponse {
 	WebCertificate WebCertificate = 19;
     bool IsDeleted = 20;
     int64 URLRequestTimestamp = 21;
+    string LoadHostAddress = 22;
+    string LoadIPAddress = 23;
 }
 
 message WebSnapshot {
@@ -101,6 +118,13 @@ message WebSnapshot {
     string IPAddress = 12;
     int32 ResponsePort = 13; 
     string Scheme = 14;
+    repeated string TechCategories = 15;
+    repeated string TechNames = 16;
+    repeated string TechVersions = 17;
+    repeated string TechMatchLocations = 18;
+    repeated string TechMatchData = 19;
+    repeated string TechIcons = 20;
+    repeated string TechWebsites = 21;
 }
 
 message WebResponseFilter {

@@ -35,6 +35,20 @@ message HostListData {
     repeated int64 AddressIDs = 6;
 }
 
+message ScanGroupAggregates {
+    repeated int64 Time = 1;
+    repeated int32 Count = 2;
+}
+
+message ScanGroupAddressStats {
+    int32 OrgID = 1;
+    int32 GroupID = 2;
+    map <string, int32> DiscoveredBy = 3;
+    map <string, ScanGroupAggregates> Aggregates = 4;
+    int32 Total = 5;
+    int32 ConfidentTotal = 6;
+}
+
 message AddressFilter {
     int32 OrgID = 1;
     int32 GroupID = 2;
