@@ -23,7 +23,7 @@ message AddressData {
     bool Deleted = 16;
     string FoundFrom = 17;
     int32 NSRecord = 18;
-    string AddressHash = 19; 
+    string AddressHash = 19;
 }
 
 message HostListData {

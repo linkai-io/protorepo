@@ -12,6 +12,7 @@ message UserContext {
 	repeated string Roles = 5;
 	string OrgCID = 6;
 	string UserCID = 7;
+	int32 SubscriptionID = 8;
 }
 
 message User {

@@ -28,6 +28,12 @@ message Org {
 	bool Deleted = 21;
 	int32 SubscriptionID = 22;
 	string UserPoolJWK = 23;
+	int32 LimitTLD = 24;
+	bool LimitTLDReached = 25;
+	int32 LimitHosts = 26;
+	bool LimitHostsReached = 27;
+	int32 LimitCustomWebFlows = 28;
+	bool LimitCustomWebFlowsReached = 29;
 }
 
 message OrgFilter {
