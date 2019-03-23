@@ -9,6 +9,7 @@ option go_package="github.com/linkai-io/am/protocservices/event";
 
 service Event {
     rpc Get(GetRequest) returns (GetResponse);
+    rpc GetSettings(GetSettingsRequest) returns (GetSettingsResponse);
     rpc MarkRead(MarkReadRequest) returns (MarkReadResponse);
     rpc Add(AddRequest) returns (AddedResponse);
     rpc UpdateSettings(UpdateSettingsRequest) returns (SettingsUpdatedResponse);
@@ -22,7 +23,15 @@ message GetRequest {
 }
 
 message GetResponse {
-    UserEvents Events = 1;
+    repeated EventData Events = 1;
+}
+
+message GetSettingsRequest {
+    UserContext UserContext = 1;
+}
+
+message GetSettingsResponse {
+    UserEventSettings Settings = 1;
 }
 
 message MarkReadRequest {
@@ -36,7 +45,7 @@ message MarkReadResponse {
 
 message AddRequest {
     UserContext UserContext = 1;
-    EventData Data = 2;
+    repeated EventData Data = 2;
 }
 
 message AddedResponse {

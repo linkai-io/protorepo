@@ -10,7 +10,7 @@ message StringEvent {
 }
 
 message EventData {
-    int32 EventID = 1;
+    int64 NotificationID = 1;
     int32 OrgID = 2;
     int32 GroupID = 3;
     int32 TypeID = 4;
@@ -22,20 +22,16 @@ message EventData {
 message EventSubscriptions {
     int32 TypeID = 1;
     int64 SubscribedTimestamp = 2;
+    bool Subscribed = 3;
 }
 
 message UserEventSettings {
     int32 WeeklyReportSendDay = 1;
-    int32 DailyReportSendHour = 2;
-    string UserTimezone = 3;
-    repeated EventSubscriptions Subscriptions = 4;
-}
-
-message UserEvents {
-    int32 OrgID = 1;
-    int32 UserID = 2;
-    UserEventSettings Settings = 3;
-    repeated EventData Events = 4;
+    bool ShouldWeeklyEmail = 2;
+    int32 DailyReportSendHour = 3;
+    bool ShouldDailyEmail = 4;
+    string UserTimezone = 5;
+    repeated EventSubscriptions Subscriptions = 6;
 }
 
 message EventFilter {
