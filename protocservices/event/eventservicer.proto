@@ -18,8 +18,7 @@ service Event {
 
 message GetRequest {
     UserContext UserContext = 1;
-    int32 GroupID = 2;
-    EventFilter Filter = 3;
+    EventFilter Filter = 2;
 }
 
 message GetResponse {
@@ -36,7 +35,7 @@ message GetSettingsResponse {
 
 message MarkReadRequest {
     UserContext UserContext = 1;
-    repeated int32 EventIDs = 2;
+    repeated int64 NotificationIDs = 2;
 }
 
 message MarkReadResponse {
@@ -64,6 +63,7 @@ message SettingsUpdatedResponse {
 message NotifyCompleteRequest {
     UserContext UserContext = 1;
     int32 GroupID = 2;
+    int64 StartTime = 3;
 }
 
 message NotifyCompletedResponse {
