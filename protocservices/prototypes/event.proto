@@ -4,18 +4,13 @@ import "prototypes/filtertype.proto";
 
 option go_package="github.com/linkai-io/am/protocservices/prototypes";
 
-
-message StringEvent {
-    repeated string Value = 1;
-}
-
 message EventData {
     int64 NotificationID = 1;
     int32 OrgID = 2;
     int32 GroupID = 3;
     int32 TypeID = 4;
     int64 EventTimestamp = 5;
-    map<string, StringEvent> Data = 6;
+    repeated string Data = 6;
     bool Read = 7;
 }
 
