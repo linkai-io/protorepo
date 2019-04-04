@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package event;
+
+import "prototypes/user.proto";
+import "prototypes/event.proto";
+
+option go_package="github.com/linkai-io/am/protocservices/event";
+
+service Event {
+    rpc Get(GetRequest) returns (GetResponse);
+    rpc GetSettings(GetSettingsRequest) returns (GetSettingsResponse);
+    rpc MarkRead(MarkReadRequest) returns (MarkReadResponse);
+    rpc Add(AddRequest) returns (AddedResponse);
+    rpc UpdateSettings(UpdateSettingsRequest) returns (SettingsUpdatedResponse);
+    rpc NotifyComplete(NotifyCompleteRequest) returns (NotifyCompletedResponse);
+}
+
+message GetRequest {
+    UserContext UserContext = 1;
+    EventFilter Filter = 2;
+}
+
+message GetResponse {
+    repeated EventData Events = 1;
+}
+
+message GetSettingsRequest {
+    UserContext UserContext = 1;
+}
+
+message GetSettingsResponse {
+    UserEventSettings Settings = 1;
+}
+
+message MarkReadRequest {
+    UserContext UserContext = 1;
+    repeated int64 NotificationIDs = 2;
+}
+
+message MarkReadResponse {
+
+}
+
+message AddRequest {
+    UserContext UserContext = 1;
+    repeated EventData Data = 2;
+}
+
+message AddedResponse {
+    
+}
+
+message UpdateSettingsRequest {
+    UserContext UserContext = 1;
+    UserEventSettings Settings = 2;
+}
+
+message SettingsUpdatedResponse {
+
+}
+
+message NotifyCompleteRequest {
+    UserContext UserContext = 1;
+    int32 GroupID = 2;
+    int64 StartTime = 3;
+}
+
+message NotifyCompletedResponse {
+
+}

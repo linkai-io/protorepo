@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+import "prototypes/filtertype.proto";
+
+option go_package="github.com/linkai-io/am/protocservices/prototypes";
+
+message EventData {
+    int64 NotificationID = 1;
+    int32 OrgID = 2;
+    int32 GroupID = 3;
+    int32 TypeID = 4;
+    int64 EventTimestamp = 5;
+    repeated string Data = 6;
+    bool Read = 7;
+}
+
+message EventSubscriptions {
+    int32 TypeID = 1;
+    int64 SubscribedTimestamp = 2;
+    bool Subscribed = 3;
+}
+
+message UserEventSettings {
+    int32 WeeklyReportSendDay = 1;
+    bool ShouldWeeklyEmail = 2;
+    int32 DailyReportSendHour = 3;
+    bool ShouldDailyEmail = 4;
+    string UserTimezone = 5;
+    repeated EventSubscriptions Subscriptions = 6;
+}
+
+message EventFilter {
+    int64 Start = 1;
+    int32 Limit = 2;
+    FilterType Filters = 3;
+}
