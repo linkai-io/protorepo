@@ -14,6 +14,7 @@ service Coordinator {
 message StartGroupRequest {
     UserContext UserContext = 1;
     int32 GroupID = 2;
+    int32 OrgID = 3;
 }
 
 message GroupStartedResponse {
@@ -23,6 +24,7 @@ message GroupStartedResponse {
 message StopGroupRequest {
     UserContext UserContext = 1;
     int32 GroupID = 2;
+    int32 OrgID = 3;
 }
 
 message GroupStoppedResponse {

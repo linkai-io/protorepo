@@ -43,10 +43,11 @@ message ScanGroupAggregates {
 message ScanGroupAddressStats {
     int32 OrgID = 1;
     int32 GroupID = 2;
-    map <string, int32> DiscoveredBy = 3;
-    map <string, ScanGroupAggregates> Aggregates = 4;
-    int32 Total = 5;
-    int32 ConfidentTotal = 6;
+    repeated string DiscoveredBy = 3;
+    repeated int32 DiscoveredByCount = 4;
+    map <string, ScanGroupAggregates> Aggregates = 5;
+    int32 Total = 6;
+    int32 ConfidentTotal = 7;
 }
 
 message AddressFilter {

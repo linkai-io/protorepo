@@ -11,7 +11,8 @@ message ScanGroupWebDataStats {
     int32 ExpiringCerts15Days = 3;
     int32 ExpiringCerts30Days = 4;
     int32 UniqueWebServers = 5;
-    map<string, int32> ServerTypes = 6;
+    repeated string ServerTypes = 6;
+    repeated int32 ServerCounts = 7;
 }
 
 message URLData {
