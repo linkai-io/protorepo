@@ -53,6 +53,7 @@ message WebData {
     int32 ResponsePort = 13;
     map<string, WebTech> DetectedTech = 14;
     int32 RequestedPort = 15;
+    string LoadURL = 16;
 }
 
 message WebCertificate {
@@ -128,6 +129,8 @@ message WebSnapshot {
     repeated string TechIcons = 20;
     repeated string TechWebsites = 21;
     int32 RequestedPort = 22;
+    string LoadURL = 23;
+    int64 URLRequestTimestamp = 24;
 }
 
 message WebResponseFilter {
