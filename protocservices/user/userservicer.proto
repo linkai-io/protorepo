@@ -14,6 +14,7 @@ service UserService {
     rpc Create(CreateUserRequest) returns (UserCreatedResponse);
     rpc Update(UpdateUserRequest) returns (UserUpdatedResponse);
     rpc Delete(DeleteUserRequest) returns (UserDeletedResponse);
+    rpc AcceptAgreement(UserAgreementRequest) returns (UserAgreementResponse);
 }
 
 message UserRequest {
@@ -78,3 +79,12 @@ message UserDeletedResponse {
     int32 UserID = 2;
 }
 
+message UserAgreementRequest {
+    UserContext UserContext = 1;
+    bool Agreement = 2;
+}
+
+message UserAgreementResponse {
+    int32 OrgID = 1;
+    int32 UserID = 2;
+}
