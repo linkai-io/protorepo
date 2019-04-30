@@ -26,6 +26,8 @@ message User {
 	int32 StatusID = 8;
 	int64 CreationTime = 9;
 	bool Deleted = 10;
+	bool AgreementAccepted = 11;
+	int64 AgreementAcceptedTimestamp = 12;
 }
 
 message UserFilter {
