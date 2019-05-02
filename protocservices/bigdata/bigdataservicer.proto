@@ -11,6 +11,7 @@ service BigData {
     rpc GetCT(GetCTRequest) returns (GetCTResponse);
     rpc AddCT(AddCTRequest) returns (CTAddedResponse);
     rpc DeleteCT(DeleteCTRequest) returns (CTDeletedResponse);
+    rpc GetETLDs(GetETLDsRequest) returns (GetETLDsResponse);
     rpc GetCTSubdomains(GetCTSubdomainsRequest) returns (GetCTSubdomainsResponse);
     rpc AddCTSubdomains(AddCTSubdomainsRequest) returns (CTSubdomainsAddedResponse);
     rpc DeleteCTSubdomains(DeleteCTSubdomainsRequest) returns (CTSubdomainsDeletedResponse);
@@ -25,6 +26,14 @@ message GetCTRequest {
 message GetCTResponse {
     int64 Time = 1;
     map<string, CTRecord> records = 2;
+}
+
+message GetETLDsRequest {
+    UserContext UserContext = 1;
+}
+
+message GetETLDsResponse {
+    repeated CTETLD ETLDs = 1;
 }
 
 message AddCTRequest {

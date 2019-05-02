@@ -26,3 +26,9 @@ message CTSubdomain {
     string CommonName = 3;
     string ETLD = 4;
 }
+
+message CTETLD {
+    int32 etld_id = 1;
+    string etld = 2;
+    int64 query_timestamp = 3; 
+}
