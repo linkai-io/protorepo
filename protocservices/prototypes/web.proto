@@ -5,6 +5,27 @@ option go_package="github.com/linkai-io/am/protocservices/prototypes";
 import "prototypes/address.proto";
 import "prototypes/filtertype.proto";
 
+
+
+message WebDomainNode {
+    string ID = 1;
+    int32 Origin = 2;
+}
+
+message WebDomainLink {
+    string Source = 1;
+    string Target = 2;
+}
+
+message WebDomainDependency {
+    string Status = 1;
+    int32 OrgID = 2;
+    int32 GroupID = 3;
+    int64 LastIndex = 4;
+    repeated WebDomainNode Nodes = 5;
+    repeated WebDomainLink Links = 6;
+}
+
 message ScanGroupWebDataStats {
     int32 OrgID = 1;
     int32 GroupID = 2;

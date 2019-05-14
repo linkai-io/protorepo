@@ -14,6 +14,7 @@ service WebData {
     rpc GetResponses(GetResponsesRequest) returns (GetResponsesResponse);
     rpc GetCertificates(GetCertificatesRequest) returns (GetCertificatesResponse);
     rpc GetURLList(GetURLListRequest) returns (GetURLListResponse);
+    rpc GetDomainDependency(GetDomainDependencyRequest) returns (GetDomainDependencyResponse);
     rpc Add(AddRequest) returns (AddedResponse);
 }
 
@@ -84,4 +85,14 @@ message AddRequest {
 
 message AddedResponse {
     int32 OrgID = 1;
+}
+
+message GetDomainDependencyRequest {
+    UserContext UserContext = 1;
+    WebResponseFilter Filter = 2;
+}
+
+message GetDomainDependencyResponse {
+    int32 OrgID = 1;
+    WebDomainDependency Dependency = 2;
 }
