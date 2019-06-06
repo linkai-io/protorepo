@@ -3,7 +3,7 @@ syntax = "proto3";
 package scangroup;
 
 import "prototypes/user.proto";
-import "prototypes/filtertype.proto";
+import "prototypes/group.proto";
 
 option go_package="github.com/linkai-io/am/protocservices/scangroup";
 
@@ -18,75 +18,6 @@ service ScanGroup {
     rpc Resume(ResumeGroupRequest) returns (GroupResumedResponse);
     rpc GroupStats(GroupStatsRequest) returns (GroupStatsResponse);
     rpc UpdateStats(UpdateStatsRequest) returns (StatsUpdatedResponse);
-    
-}
-
-message NSModuleConfig {
-    int32 RequestsPerSecond = 1;
-}
-
-message BruteModuleConfig {
-    int32 RequestsPerSecond = 1;
-    repeated string CustomSubNames = 2;
-    int32 MaxDepth = 3;
-}
-
-message PortModuleConfig {
-    int32 RequestsPerSecond = 1;
-    repeated int32 CustomPorts = 2;
-}
-
-message WebModuleConfig {
-    int32 RequestsPerSecond = 1;
-    bool TakeScreenShots = 2;
-    int32 MaxLinks = 3;
-    bool ExtractJS = 4;
-    bool FingerprintFrameworks = 5;
-}
-
-message KeywordModuleConfig {
-    repeated string Keywords = 1;
-}
-
-message ModuleConfiguration {
-    NSModuleConfig NSConfig = 1;
-    BruteModuleConfig BruteConfig = 2;
-    PortModuleConfig PortConfig = 3;
-    WebModuleConfig WebModuleConfig = 4;
-    KeywordModuleConfig KeywordModuleConfig = 5;
-    repeated int64 DailyScanSchedules = 6;
-}
-
-message Group {
-    int32 OrgID = 1;
-    int32 GroupID = 2;
-    string GroupName = 3;
-    int64 CreationTime = 4;
-    string CreatedBy = 5;
-    string OriginalInputS3URL = 6;
-    int64 ModifiedTime = 7;
-    string ModifiedBy = 8;
-    ModuleConfiguration ModuleConfiguration = 9;
-    bool Paused = 10;
-    bool Deleted = 11;
-    int32 CreatedByID = 12;
-    int32 ModifiedByID = 13;
-}
-
-message ScanGroupFilter {
-    int64 Start = 1;
-    int32 Limit = 2;
-    FilterType Filters = 3;
-}
-
-message GroupStats {
-    int32 OrgID = 1;
-    int32 GroupID = 2;
-    int32 ActiveAddresses = 3;
-    int32 BatchSize = 4;
-    int64 LastUpdated = 5;
-    int64 BatchStart = 6;
-    int64 BatchEnd = 7;
 }
 
 message NewGroupRequest {

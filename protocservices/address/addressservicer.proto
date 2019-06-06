@@ -3,6 +3,7 @@ syntax = "proto3";
 package address;
 
 import "prototypes/user.proto";
+import "prototypes/group.proto";
 import "prototypes/address.proto";
 
 option go_package="github.com/linkai-io/am/protocservices/address";
@@ -16,6 +17,7 @@ service Address {
     rpc Delete(DeleteAddressesRequest) returns (DeleteAddressesResponse);
     rpc Ignore(IgnoreAddressesRequest) returns (IgnoreAddressesResponse);
     rpc Count(CountAddressesRequest) returns (CountAddressesResponse);
+    rpc Archive(ArchiveAddressesRequest) returns (AddressesArchivedResponse);
 }
 
 message AddressesRequest {
@@ -97,4 +99,15 @@ message IgnoreAddressesRequest {
 
 message IgnoreAddressesResponse {
     int32 OrgID = 1;
+}
+
+message ArchiveAddressesRequest {
+    UserContext UserContext = 1;
+    Group ScanGroup = 2;
+    int64 ArchiveTime = 3;
+}
+
+message AddressesArchivedResponse {
+    int32 OrgID = 1;
+    int32 Count = 2;
 }

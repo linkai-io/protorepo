@@ -28,6 +28,7 @@ message User {
 	bool Deleted = 10;
 	bool AgreementAccepted = 11;
 	int64 AgreementAcceptedTimestamp = 12;
+	int64 LastLoginTimestamp = 13;
 }
 
 message UserFilter {

@@ -3,6 +3,7 @@ syntax = "proto3";
 package webdata;
 
 import "prototypes/user.proto";
+import "prototypes/group.proto";
 import "prototypes/web.proto";
 
 option go_package="github.com/linkai-io/am/protocservices/webdata";
@@ -16,8 +17,8 @@ service WebData {
     rpc GetURLList(GetURLListRequest) returns (GetURLListResponse);
     rpc GetDomainDependency(GetDomainDependencyRequest) returns (GetDomainDependencyResponse);
     rpc Add(AddRequest) returns (AddedResponse);
+    rpc Archive(ArchiveWebRequest) returns (WebArchivedResponse);
 }
-
 
 message OrgStatsRequest {
     UserContext UserContext = 1;
@@ -95,4 +96,16 @@ message GetDomainDependencyRequest {
 message GetDomainDependencyResponse {
     int32 OrgID = 1;
     WebDomainDependency Dependency = 2;
+}
+
+
+message ArchiveWebRequest {
+    UserContext UserContext = 1;
+    Group ScanGroup = 2;
+    int64 ArchiveTime = 3;
+}
+
+message WebArchivedResponse {
+    int32 OrgID = 1;
+    int32 Count = 2;
 }
