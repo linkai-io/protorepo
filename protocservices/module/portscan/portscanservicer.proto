@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package module;
+
+import "prototypes/address.proto";
+import "prototypes/group.proto";
+import "prototypes/user.proto";
+import "prototypes/portscan.proto";
+
+option go_package="github.com/linkai-io/am/protocservices/module/portscan";
+
+service PortScanModule {
+    rpc AddGroup(AddGroupRequest) returns (GroupAddedResponse);
+    rpc RemoveGroup(RemoveGroupRequest) returns (GroupRemovedResponse);
+    rpc Analyze(AnalyzeRequest) returns (AnalyzedResponse);
+}
+
+message AddGroupRequest {
+    UserContext UserContext = 1;
+    Group Group = 2;
+}
+
+message GroupAddedResponse {
+}
+
+message RemoveGroupRequest {
+    UserContext UserContext = 1;
+    int32 OrgID = 2;
+    int32 GroupID = 3;
+}
+
+message GroupRemovedResponse {
+}
+
+message AnalyzeRequest {
+    UserContext UserContext = 1;
+    AddressData Address = 2;
+}
+
+message AnalyzedResponse {
+    AddressData Address = 1;
+    PortResults PortResult = 2;
+}

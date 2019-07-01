@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option go_package="github.com/linkai-io/am/protocservices/prototypes";
+
+message Bag {
+    map<string, Int32Val> Int32Vals = 1;
+    map<string, Int64Val> Int64Vals = 2;
+    map<string, StringVal> StringVals = 3;
+    map<string, BoolVal> BoolVals = 4;
+    map<string, FloatVal> FloatVals = 5;
+}
+
+message Int32Val {
+    repeated int32 value = 1; 
+}
+
+message Int64Val {
+    repeated int64 value = 1; 
+}
+
+message StringVal {
+    repeated string value = 1;
+}
+
+message BoolVal {
+    repeated bool value = 1;
+}
+
+message FloatVal {
+    repeated float value = 1;
+}

@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package module;
+
+import "prototypes/address.proto";
+import "prototypes/user.proto";
+import "prototypes/portscan.proto";
+import "prototypes/bag.proto";
+
+option go_package="github.com/linkai-io/am/protocservices/module";
+
+service PortModule {
+    rpc AnalyzeWithPorts(AnalyzeWithPortsRequest) returns(AnalyzedWithPortsResponse);
+}
+
+message AnalyzeWithPortsRequest {
+    UserContext UserContext = 1;
+    AddressData Address = 2;
+    PortResults Ports = 3;
+}
+
+message AnalyzedWithPortsResponse {
+    AddressData Original = 1;
+    map <string, AddressData> Addresses = 2;
+    Bag Results = 3;
+}

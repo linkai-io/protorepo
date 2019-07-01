@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "prototypes/filtertype.proto";
+import "prototypes/portscan.proto"; 
 
 option go_package="github.com/linkai-io/am/protocservices/prototypes";
 
@@ -33,6 +34,7 @@ message HostListData {
     string HostAddress = 4;
     repeated string IPAddresses = 5;
     repeated int64 AddressIDs = 6;
+    PortResults Ports = 7;
 }
 
 message ScanGroupAggregates {

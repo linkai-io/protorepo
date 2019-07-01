@@ -5,6 +5,7 @@ package address;
 import "prototypes/user.proto";
 import "prototypes/group.proto";
 import "prototypes/address.proto";
+import "prototypes/portscan.proto";
 
 option go_package="github.com/linkai-io/am/protocservices/address";
 
@@ -14,6 +15,7 @@ service Address {
     rpc OrgStats(OrgStatsRequest) returns (OrgStatsResponse);
     rpc GroupStats(GroupStatsRequest) returns (GroupStatsResponse);
     rpc Update(UpdateAddressRequest) returns (UpdateAddressesResponse);
+    rpc UpdateHostPorts(UpdateHostPortsRequest) returns (UpdateHostPortsResponse);
     rpc Delete(DeleteAddressesRequest) returns (DeleteAddressesResponse);
     rpc Ignore(IgnoreAddressesRequest) returns (IgnoreAddressesResponse);
     rpc Count(CountAddressesRequest) returns (CountAddressesResponse);
@@ -79,6 +81,17 @@ message UpdateAddressesResponse {
     int32 OrgID = 1;
     int32 Count = 2;
 }
+
+message UpdateHostPortsRequest {
+    UserContext UserContext = 1;
+    AddressData Address = 2;
+    PortResults PortResult = 3;
+}
+
+message UpdateHostPortsResponse {
+    int32 OrgID = 1;
+}
+
 
 message DeleteAddressesRequest {
     UserContext UserContext = 1;

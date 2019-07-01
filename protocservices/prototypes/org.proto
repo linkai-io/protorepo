@@ -34,6 +34,7 @@ message Org {
 	bool LimitHostsReached = 27;
 	int32 LimitCustomWebFlows = 28;
 	bool LimitCustomWebFlowsReached = 29;
+	bool PortScanEnabled = 30;
 }
 
 message OrgFilter {

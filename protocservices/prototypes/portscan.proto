@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option go_package="github.com/linkai-io/am/protocservices/prototypes";
+
+message PortData {
+	string IPAddress = 1;
+	repeated int32 TCPPorts = 2;
+	repeated int32 UDPPorts = 3;
+	repeated string TCPBanners = 4;
+	repeated string UDPBanners = 5;
+}
+
+message Ports {
+    PortData Current = 1;
+    PortData Previous = 2;
+}
+
+message PortResults {
+	int64 PortID = 1;
+	int32 OrgID = 2;
+	int32 GroupID = 3;
+	string HostAddress = 4;
+	Ports Ports = 5;
+	int64 ScannedTimestamp = 6;
+	int64 PreviousScannedTimestamp = 7;
+}
