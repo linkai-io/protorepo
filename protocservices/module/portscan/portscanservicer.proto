@@ -10,34 +10,34 @@ import "prototypes/portscan.proto";
 option go_package="github.com/linkai-io/am/protocservices/module/portscan";
 
 service PortScanModule {
-    rpc AddGroup(AddGroupRequest) returns (GroupAddedResponse);
-    rpc RemoveGroup(RemoveGroupRequest) returns (GroupRemovedResponse);
-    rpc Analyze(AnalyzeRequest) returns (AnalyzedResponse);
+    rpc AddGroup(PortScanAddGroupRequest) returns (PortScanGroupAddedResponse);
+    rpc RemoveGroup(PortScanRemoveGroupRequest) returns (PortScanGroupRemovedResponse);
+    rpc Analyze(PortScanAnalyzeRequest) returns (PortScanAnalyzedResponse);
 }
 
-message AddGroupRequest {
+message PortScanAddGroupRequest {
     UserContext UserContext = 1;
     Group Group = 2;
 }
 
-message GroupAddedResponse {
+message PortScanGroupAddedResponse {
 }
 
-message RemoveGroupRequest {
+message PortScanRemoveGroupRequest {
     UserContext UserContext = 1;
     int32 OrgID = 2;
     int32 GroupID = 3;
 }
 
-message GroupRemovedResponse {
+message PortScanGroupRemovedResponse {
 }
 
-message AnalyzeRequest {
+message PortScanAnalyzeRequest {
     UserContext UserContext = 1;
     AddressData Address = 2;
 }
 
-message AnalyzedResponse {
+message PortScanAnalyzedResponse {
     AddressData Address = 1;
     PortResults PortResult = 2;
 }

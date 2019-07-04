@@ -16,7 +16,7 @@ message BruteModuleConfig {
 
 message PortModuleConfig {
     int32 RequestsPerSecond = 1;
-    repeated int32 CustomPorts = 2;
+    repeated int32 CustomWebPorts = 2;
     repeated int32 TCPPorts = 3;
     repeated int32 UDPPorts = 4;
     bool PortScanEnabled = 5;
