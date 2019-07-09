@@ -20,6 +20,7 @@ service Address {
     rpc Ignore(IgnoreAddressesRequest) returns (IgnoreAddressesResponse);
     rpc Count(CountAddressesRequest) returns (CountAddressesResponse);
     rpc Archive(ArchiveAddressesRequest) returns (AddressesArchivedResponse);
+    rpc GetPorts(GetPortsRequest) returns (stream GetPortsResponse);
 }
 
 message AddressesRequest {
@@ -123,4 +124,14 @@ message ArchiveAddressesRequest {
 message AddressesArchivedResponse {
     int32 OrgID = 1;
     int32 Count = 2;
+}
+
+message GetPortsRequest {
+    UserContext UserContext = 1;
+    AddressFilter Filter = 2;
+}
+
+message GetPortsResponse {
+    int32 OrgID = 1;
+    PortResults PortResults = 2;
 }
