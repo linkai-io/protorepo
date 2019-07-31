@@ -13,6 +13,7 @@ message UserContext {
 	string OrgCID = 6;
 	string UserCID = 7;
 	int32 SubscriptionID = 8;
+	int32 OrgStatusID = 9;
 }
 
 message User {
