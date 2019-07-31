@@ -35,6 +35,11 @@ message Org {
 	int32 LimitCustomWebFlows = 28;
 	bool LimitCustomWebFlowsReached = 29;
 	bool PortScanEnabled = 30;
+	int64 PaymentRequiredTimestamp = 31;
+	string BillingPlanType = 32;
+	string BillingPlanID = 33;
+	string BillingSubscriptionID = 34;
+	bool IsBetaPlan = 35;
 }
 
 message OrgFilter {
