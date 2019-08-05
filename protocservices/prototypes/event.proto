@@ -12,12 +12,17 @@ message EventData {
     int64 EventTimestamp = 5;
     repeated string Data = 6;
     bool Read = 7;
+    string JsonData = 8;
 }
 
 message EventSubscriptions {
     int32 TypeID = 1;
     int64 SubscribedTimestamp = 2;
     bool Subscribed = 3;
+    string WebhookVersion = 4;
+    bool WebhookEnabled = 5;
+    string WebhookURL = 6;
+    string WebhookType = 7;
 }
 
 message UserEventSettings {
@@ -27,6 +32,8 @@ message UserEventSettings {
     bool ShouldDailyEmail = 4;
     string UserTimezone = 5;
     repeated EventSubscriptions Subscriptions = 6;
+    string WebhookCurrentKey = 7;
+    string WebhookPreviousKey = 8;
 }
 
 message EventFilter {
