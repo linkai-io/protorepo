@@ -19,10 +19,32 @@ message EventSubscriptions {
     int32 TypeID = 1;
     int64 SubscribedTimestamp = 2;
     bool Subscribed = 3;
-    string WebhookVersion = 4;
-    bool WebhookEnabled = 5;
-    string WebhookURL = 6;
-    string WebhookType = 7;
+}
+
+message WebhookEvent {
+    int32 WebhookEventID = 1;
+    int32 OrgID = 2;
+    int32 GroupID = 3;
+    int64 NotificationID = 4;
+    int32 WebhookID = 5;
+    int32 TypeID = 6;
+    int64 LastAttemptTimestamp = 7;
+    int32 LastAttemptStatus = 8;
+}
+
+message WebhookEventSettings {
+    int32 WebhookID = 1;
+    int32 OrgID = 2;
+    int32 GroupID = 3;
+    string Name = 4;
+    repeated int32 Events = 5;
+    bool Enabled = 6;
+    string Version = 7;
+    string URL = 8;
+    string Type = 9;
+    string CurrentKey = 10;
+    string PreviousKey = 11;
+    bool Deleted = 12;
 }
 
 message UserEventSettings {
@@ -32,8 +54,6 @@ message UserEventSettings {
     bool ShouldDailyEmail = 4;
     string UserTimezone = 5;
     repeated EventSubscriptions Subscriptions = 6;
-    string WebhookCurrentKey = 7;
-    string WebhookPreviousKey = 8;
 }
 
 message EventFilter {
