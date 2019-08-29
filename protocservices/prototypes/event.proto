@@ -36,15 +36,16 @@ message WebhookEventSettings {
     int32 WebhookID = 1;
     int32 OrgID = 2;
     int32 GroupID = 3;
-    string Name = 4;
-    repeated int32 Events = 5;
-    bool Enabled = 6;
-    string Version = 7;
-    string URL = 8;
-    string Type = 9;
-    string CurrentKey = 10;
-    string PreviousKey = 11;
-    bool Deleted = 12;
+    string ScanGroupName = 4;
+    string Name = 5;
+    repeated int32 Events = 6;
+    bool Enabled = 7;
+    string Version = 8;
+    string URL = 9;
+    string Type = 10;
+    string CurrentKey = 11;
+    string PreviousKey = 12;
+    bool Deleted = 13;
 }
 
 message UserEventSettings {

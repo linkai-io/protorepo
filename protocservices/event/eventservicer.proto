@@ -17,7 +17,6 @@ service Event {
     rpc GetWebhooks(GetWebhooksRequest) returns (GetWebhooksResponse);
     rpc UpdateWebhooks(UpdateWebhooksRequest) returns (WebhooksUpdatedResponse);
     rpc GetWebhookEvents(GetWebhookEventsRequest) returns (GetWebhookEventsResponse);
-
 }
 
 message GetRequest {
