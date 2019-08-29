@@ -14,6 +14,9 @@ service Event {
     rpc Add(AddRequest) returns (AddedResponse);
     rpc UpdateSettings(UpdateSettingsRequest) returns (SettingsUpdatedResponse);
     rpc NotifyComplete(NotifyCompleteRequest) returns (NotifyCompletedResponse);
+    rpc GetWebhooks(GetWebhooksRequest) returns (GetWebhooksResponse);
+    rpc UpdateWebhooks(UpdateWebhooksRequest) returns (WebhooksUpdatedResponse);
+    rpc GetWebhookEvents(GetWebhookEventsRequest) returns (GetWebhookEventsResponse);
 }
 
 message GetRequest {
@@ -68,4 +71,31 @@ message NotifyCompleteRequest {
 
 message NotifyCompletedResponse {
 
+}
+
+message GetWebhooksRequest {
+    UserContext UserContext = 1;
+}
+
+message GetWebhooksResponse {
+    int32 OrgID = 1;
+    repeated WebhookEventSettings Settings = 2;
+}
+
+message UpdateWebhooksRequest {
+    UserContext UserContext = 1;
+    WebhookEventSettings Settings = 2;
+}
+
+message WebhooksUpdatedResponse {
+    int32 OrgID = 1;
+}
+
+message GetWebhookEventsRequest {
+    UserContext UserContext = 1;
+}
+
+message GetWebhookEventsResponse {
+    int32 OrgID = 1;
+    repeated WebhookEvent Events = 2;
 }
